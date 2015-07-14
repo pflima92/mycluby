@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<name>MyCluby buildaggregate</name>
+	<artifactId>mycluby-pom-buildaggregate</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>br.com.techfullit.mycluby.parent</groupId>
+		<artifactId>mycluby-pom-parent</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
+
+	<profiles>
+		<profile>
+			<id>full-build</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<!-- Parent -->
+				<module>../mycluby-pom-parent</module>
+				<!-- Common -->
+				<module>../mycluby-common</module>
+				<!-- Services -->
+				<module>../mycluby-services</module>
+				<!-- Web  -->
+				<module>../mycluby-web</module>
+				
+				<module>../mycluby-corporate-web</module>
+			</modules>
+		</profile>
+
+	</profiles>
+
+	<distributionManagement>
+		<repository>
+			<id>${team_name}</id>
+			<name>${team_name}</name>
+			<url>${repositoryUrl}</url>
+		</repository>
+		<snapshotRepository>
+			<id>${team_name}</id>
+			<name>${team_name}</name>
+			<url>${repositoryUrl}</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
