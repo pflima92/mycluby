@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{updateMobileAccount.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Configurações de Pagamento</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+			
+			<p:messages></p:messages>
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.settings} - Pagamentos</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+
+
+
+								<div class="form-group">
+									<div class="col-sm-7">
+										<label class="control-label">Habilitar pagamento em
+											Dispositivos</label>
+										<p>#{label.textEmailActive}</p>
+									</div>
+									<div class="col-sm-3">
+										<div class="switch switch-small">
+											<h:selectBooleanCheckbox
+												value="#{updateMobileAccount.user.accountInfo.mobilePayment}"></h:selectBooleanCheckbox>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-7">
+										<label class="control-label">Habilitar notificações
+											quando logado</label>
+										<p>Ao ativar esta opção você ira receber notificações
+											quando estiver com o MyCluby online</p>
+									</div>
+									<div class="col-sm-3">
+										<div class="switch switch-small">
+											<h:selectBooleanCheckbox
+												value="#{updateMobileAccount.user.accountInfo.mobileNotification}"></h:selectBooleanCheckbox>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-sm-7">
+										<label class="control-label">Estabelecer Limite de
+											Consumo</label>
+										<p>Com essa funcionalidade você garante não ultrapassar o
+											limite de consuma quando estiver em um local</p>
+									</div>
+									<div class="col-sm-3">
+										<div class="switch switch-small">
+											<h:selectBooleanCheckbox
+												value="#{updateMobileAccount.user.accountInfo.limitConsume}"></h:selectBooleanCheckbox>
+										</div>
+									</div>
+								</div>
+
+								<h:panelGroup
+									rendered="#{updateMobileAccount.user.accountInfo.limitConsume}">
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Limite de
+											Consumo:</label>
+										<h:inputText value="#{updateMobileAccount.limitValue}"></h:inputText>
+									</div>
+								</h:panelGroup>
+
+								<div class="panelButtons mt10">
+									<h:commandButton style="float: right"
+										styleClass="btn btn-success" value="Atualizar" update="@form"
+										action="#{updateMobileAccount.updateAccountContinue}"></h:commandButton>
+								</div>
+
+								<h:panelGroup id="addCard"
+									rendered="false"> <!-- Funcionalidade Desabilitada  -->
+<p:messages id="addCardMessage"></p:messages>
+									<h4>Adicionar Cartão</h4>
+									<div class="content"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Número do
+											Cartão:</label>
+										<h:inputText required="true" maxlength="16" label="Número do Cartão" value="#{updateMobileAccount.card.numberCard}"></h:inputText>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Nome do Cartão
+											(Igual ao Plastico):</label>
+										<h:inputText required="true" label="Nome do Cartão" maxlength="20" value="#{updateMobileAccount.card.name}"></h:inputText>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Cód. Segurança:</label>
+										<h:inputText required="true" label="Via" maxlength="3" value="#{updateMobileAccount.card.validatorCard}"></h:inputText>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Validade (Mês/Ano):</label>
+										 <p:calendar required="true" label="Validade"   mindate="calwidget.today()" widgetVar="calwidget" value="#{updateMobileAccount.card.validateDate}" pattern="MM/yy" mask="true" />
+									</div>
+
+									<div class="panelButtons mt10">
+										<p:commandButton style="float: right; margin-left: 20px" process="addCard"  update="@form"
+										action="#{updateMobileAccount.addCard}"
+											styleClass="btn btn-action" value="Adicionar"></p:commandButton>
+									</div>
+
+									<h:panelGroup id="panelCards"
+										rendered="#{!empty updateMobileAccount.user.cards}">
+
+										<div class="block-flat">
+											<div class="header">
+												<h3>Meus Cartões Cadastrados</h3>
+											</div>
+											<div class="content">
+												<div class="table-responsive">
+													<table class="table no-border hover">
+														<thead class="no-border">
+															<tr>
+																<th style="width: 30%;"><strong>Número do
+																		Cartão</strong></th>
+																<th class="text-left"><strong>Descrição</strong></th>
+																<th class="text-left"><strong>Cód. Segurança</strong></th>
+																<th class="text-left"><strong>Validade</strong></th>
+																<th style="width: 15%;" class="text-left"><strong>Ações</strong></th>
+															</tr>
+														</thead>
+														<tbody class="no-border-y">
+															<ui:repeat var="card" value="#{updateMobileAccount.user.cards}">
+															<tr>
+																<td>#{card.numberCard}</td>
+																<td class="text-left">#{card.name}</td>
+																	<td class="text-left">#{card.validatorCard}</td>
+																<td class="text-left">
+																<h:outputText value="#{card.validateDate}" >
+																<f:convertDateTime pattern="MM/yy"></f:convertDateTime>
+																	</h:outputText>
+																</td>
+																<td class="text-left">
+																<p:commandLink
+										styleClass="label label-danger" update="@form">
+																			<p:confirm header="Confirmação"
+																				message="Tem certeza disso?" icon="ui-icon-alert" />
+																			<i class="fa fa-times"></i>
+									</p:commandLink>
+										<p:confirmDialog global="true" showEffect="fade"
+												hideEffect="explode">
+												<p:commandButton value="Sim" process="@this" update="@form"
+													actionListener="#{updateMobileAccount.deleteCard}"
+													styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+														<f:attribute name="action" value="${card}" />
+													</p:commandButton>
+												<p:commandButton value="Não" type="button"
+													styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+											</p:confirmDialog>
+																</td>
+															</tr>
+															</ui:repeat>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+
+									</h:panelGroup>
+
+								</h:panelGroup>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

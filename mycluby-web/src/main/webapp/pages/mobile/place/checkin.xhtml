@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+
+	<f:metadata>
+				<f:event type="preRenderView"
+					listener="#{checkIn.loadData}" />
+			</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Efetuar Check-In</h2>
+		</div>
+
+		<h:form>
+		
+			<div class="cl-mcont">
+
+				<h:form id="formCheckin">
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="block-flat">
+								<div class="header">
+									<h3>Escolha seu lugar para efetuar Check-In</h3>
+								</div>
+								<div class="content form-horizontal group-border-dashed">
+
+									<div align="center">
+										<p:gmap id="gmap" model="#{checkIn.map.model}" zoom="18"
+											streetView="false" center="#{checkIn.map.latitude}, #{checkIn.map.longitude}"
+											type="ROADMAP" style="width:400px;height:200px">
+											<p:ajax event="overlaySelect" update="confirmCheckin"
+												oncomplete="PF('dlg').show();"
+												listener="#{checkIn.onMarkerSelect}" />
+										</p:gmap>
+										<p:gmapInfoWindow>
+											<h:outputText value="#{checkIn.marker.data.title}" />
+										</p:gmapInfoWindow>
+
+									</div>
+
+									<p:dialog header="Check-In em ${checkIn.marker.title}" modal="true"
+										widgetVar="dlg" minimizable="false" resizable="false"
+										id="confirmCheckin">
+										<br />
+										<p>Deseja fazer o Check in em: <b>#{checkIn.marker.title}</b></p>
+										<p>
+											<label style="font-weight: 100;" >Hora de Chegada:</label>
+											<b><h:outputText value="#{checkIn.onSite.checkIn}">
+																		<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo"  ></f:convertDateTime>
+																	</h:outputText></b>
+										</p>
+										<hr />
+										<div class="panelButtons" align="center">
+											<h:commandButton styleClass="btn btn-success btn-lg"
+												value="Efetuar Check-In" update="@form"
+												action="#{checkIn.makeCheckIn}"></h:commandButton>
+										</div>
+									</p:dialog>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</h:form>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

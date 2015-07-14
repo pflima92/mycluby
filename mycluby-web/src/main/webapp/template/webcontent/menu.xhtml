@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:form>
+
+	<div id="cl-wrapper">
+		<div class="cl-sidebar" data-step="2" data-intro="#{label.menuLeft}">
+			<div class="cl-toggle">
+				<i class="fa fa-bars"></i>
+			</div>
+			<div class="cl-navblock">
+				<div class="menu-space">
+					<div class="content">
+						<div class="side-user">
+							<h:commandLink action="#{core.viewMyProfile}">
+								<div class="avatar">
+									<img alt="" height="60" width="60" class="c-avatar ttip"
+										src="data:image/png;base64,#{core.ctxInfo.currentEntity.profileImage}" />
+								</div>
+								<div class="info">
+									<a href="#"><h:outputText
+											value="${core.ctxInfo.currentEntity.firstname}"
+											rendered="${core.ctxInfo.isUser()}" /></a>
+									<p:graphicImage value="/resources/images/state_online.png"
+										alt="avatar" />
+									<span>Online</span>
+								</div>
+							</h:commandLink>
+						</div>
+
+						<ul class="cl-vnavigation">
+							<div align="center">
+
+								<p:autoComplete id="magicSearch" styleClass="input-magic"
+									rendered="false" maxResults="5" forceSelection="true"
+									value="#{core.magicItem}" completeMethod="#{core.magicSearch}"
+									var="item" minQueryLength="3"
+									itemLabel="#{core.magicItem.label}">
+									<p:column style="width:10%">
+										<img alt="" height="30" width="30" class="c-avatar ttip"
+											src="data:image/png;base64,#{item.image}" />
+									</p:column>
+
+									<p:column>
+										<h:outputText value="#{item.label}" />
+									</p:column>
+									<p:ajax event="itemSelect" listener="#{core.onMagicItemSelect}"
+										update="@form" />
+								</p:autoComplete>
+								<p:watermark value="O que você procura?" for="magicSearch"></p:watermark>
+							</div>
+						</ul>
+						<ul class="cl-vnavigation">
+							<li><h:commandLink action="index">
+									<i class="fa fa-home"></i>#{label.dashboard}</h:commandLink></li>
+							<li><a href="#"><i class="fa  fa-user"></i>#{label.myProfile}</a>
+								<ul class="sub-menu">
+									<li><h:commandLink action="#{core.viewMyProfile}">Visualizar Perfil</h:commandLink></li>
+									<li><h:commandLink action="editProfile">#{label.editProfile}</h:commandLink></li>
+									<!-- <li><h:commandLink action="messages">#{label.messages}</h:commandLink></li> -->
+									<li><h:commandLink action="pictures">#{label.myPhotos}</h:commandLink></li>
+									<li><h:commandLink action="settings">#{label.settings} da Conta</h:commandLink></li>
+									<li><h:commandLink action="mobileSettings">#{label.settings} de Pagamento</h:commandLink></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-group"></i>#{label.myFriends}</a>
+								<ul class="sub-menu">
+									<li><h:commandLink action="findFriend"
+											value="Encontrar Amigos"></h:commandLink></li>
+									<li><h:commandLink action="myFriends"
+											value="#{label.myFriends}"></h:commandLink></li>
+									<!-- 		<li><h:commandLink action="groups"
+											value="Gerenciar Grupos"></h:commandLink></li> -->
+								</ul></li>
+							<li><a href="#"><i class="fa fa-th-large"></i>Meus
+									Estabelecimentos</a>
+								<ul class="sub-menu">
+									<li><h:commandLink action="findEstablishment"
+											value="Encontrar Estabelecimento"></h:commandLink></li>
+									<!-- <li><h:commandLink action="myEstablishments"
+											value="Meus Estabelecimentos"></h:commandLink></li> -->
+									<li><h:commandLink action="moment"
+											value="#{label.trendsMoment}"></h:commandLink></li>
+									<!-- 		<li><h:commandLink action="groups"
+											value="Gerenciar Grupos"></h:commandLink></li> -->
+								</ul></li>
+							<li><a href="#"><i class="fa fa-table"></i>#{label.myEvents}</a>
+								<ul class="sub-menu">
+									<li><h:commandLink action="newEvent"
+											value="Cadastrar novo
+											evento"></h:commandLink></li>
+									<li><h:commandLink action="listEvents"
+											value="#{label.myEvents}"></h:commandLink></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-sign-in"></i>MyCluby
+									Agora</a>
+								<ul class="sub-menu">
+									<li><h:commandLink rendered="${core.mobile and onSite.currentSession.status != 'UNOPENED'}"
+											action="placeOptions">Meu Check-In</h:commandLink></li>
+									<li><h:commandLink rendered="${core.mobile and onSite.currentSession.status == 'UNOPENED'}"
+											action="placeCheckin">Efetuar Check-In</h:commandLink></li>
+									<li><h:commandLink rendered="${core.mobile and onSite.currentSession.status != 'UNOPENED'}"
+											action="placeCheckout">Fazer Check-Out</h:commandLink></li>
+									<li><h:commandLink rendered="${core.mobile and onSite.currentSession.status != 'UNOPENED'}"
+											action="menuView">Ver cardápio</h:commandLink></li>
+									<li><h:commandLink rendered="${core.mobile and onSite.currentSession.status != 'UNOPENED'}"
+											action="consumeView">Minha Consuma</h:commandLink></li>
+									<li><h:commandLink action="paymentHistory">Histórico de Entradas</h:commandLink></li>
+								</ul></li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:form>
+</html>

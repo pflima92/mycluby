@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{secondStep.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>#{label.welcome} - #{label.secondSteps}</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.tellMore}</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourGender}</label>
+									<div class="col-sm-6">
+										<h:selectOneMenu value="#{secondStep.user.gender}" styleClass="form-control" style="width: 20%">
+											<f:selectItem itemLabel="#{label.genderM}" itemValue="M" />
+											<f:selectItem itemLabel="#{label.genderF}" itemValue="F" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourCountry}</label>
+									<div class="col-sm-6">
+										<h:inputText value="#{secondStep.user.country}" styleClass="form-control" maxlength="45"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourState}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.state}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourCity}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.city}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourAddress}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.address}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourComplement}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.complement}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourPhone}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.resPhone}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourCellPhone}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.cellPhone}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourJobPhone}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45" value="#{secondStep.user.jobPhone}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.aboutYou}</label>
+									<div class="col-sm-6">
+										<h:inputTextarea styleClass="form-control" maxlength="45" value="#{secondStep.user.about}"
+											rows="10"></h:inputTextarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panelButtons">
+
+					<h:commandButton style="float: right"
+						styleClass="btn btn-primary btn-lg" value="#{label.advance}"
+						update="@form" action="#{secondStep.updateAccountContinue}"></h:commandButton>
+
+					<h:commandButton style="float: right"
+						styleClass="btn btn-default btn-lg" value="#{label.back}"
+						action="firstStep"></h:commandButton>
+
+					<h:commandButton style="float: right"
+						styleClass="btn btn-default btn-lg" value="#{label.skip}"
+						action="index"></h:commandButton>
+
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

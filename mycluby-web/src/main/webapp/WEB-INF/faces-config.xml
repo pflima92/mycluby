@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+  	
+  	<!-- JSF and Spring are integrated -->
+  	
+  	<application>
+        <variable-resolver>
+            org.springframework.web.jsf.DelegatingVariableResolver
+        </variable-resolver>
+    </application>
+    
+  	<application>
+    	<resource-handler>org.omnifaces.resourcehandler.UnmappedResourceHandler</resource-handler>
+	</application>
+  	
+  	<application>
+    	<el-resolver>
+    		org.springframework.web.jsf.el.SpringBeanFacesELResolver
+    	</el-resolver>
+    	<locale-config>
+     		<default-locale>pt_BR</default-locale>
+     	</locale-config>
+		<resource-bundle>
+			<base-name>br.com.techfullit.mycluby.i18n.language</base-name>
+			<var>label</var>
+		</resource-bundle>
+  	</application>
+  	
+  	 <lifecycle>
+        <phase-listener>br.com.techfullit.mycluby.phaselistener.AuthenticationPhaseListener</phase-listener>
+    </lifecycle>
+	
+	<!-- configuration of navigation rules -->
+	
+	<navigation-rule>
+	
+		<from-view-id>*</from-view-id>
+		
+		<!-- Global Action Events  -->
+	    <navigation-case>
+	        <from-outcome>logout</from-outcome>
+            <to-view-id>/pages/login.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+         <navigation-case>
+	        <from-outcome>index</from-outcome>
+            <to-view-id>/pages/index.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <navigation-case>
+	        <from-outcome>createEstablishment</from-outcome>
+            <to-view-id>/pages/starting/establishment/signup.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>createEstablishmentPending</from-outcome>
+            <to-view-id>/pages/starting/establishment/pending.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>createAccount</from-outcome>
+            <to-view-id>/pages/starting/user/signup.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>createAccountPending</from-outcome>
+            <to-view-id>/pages/starting/user/pending.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <navigation-case>
+	        <from-outcome>forgivePass</from-outcome>
+            <to-view-id>/pages/help/forgivePass.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+         <navigation-case>
+	        <from-outcome>passSolicitationSuccess</from-outcome>
+            <to-view-id>/pages/help/forgivePassSuccess.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <navigation-case>
+	        <from-outcome>help</from-outcome>
+            <to-view-id>/pages/help/help.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <!-- Profile Pages: /pages/account  -->
+
+         <navigation-case>
+	        <from-outcome>profile</from-outcome>
+            <to-view-id>/pages/account/profile.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>editProfile</from-outcome>
+            <to-view-id>/pages/account/edit.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>userChangePassword</from-outcome>
+            <to-view-id>/pages/account/changePassword.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>messages</from-outcome>
+            <to-view-id>/pages/account/messages.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>pictures</from-outcome>
+            <to-view-id>/pages/account/pictures.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>settings</from-outcome>
+            <to-view-id>/pages/account/settings.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <!-- Startup Interaction - /pages/startup  -->
+         <navigation-case>
+	        <from-outcome>firstStep</from-outcome>
+            <to-view-id>/pages/startup/firstStep.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+         <navigation-case>
+	        <from-outcome>secondStep</from-outcome>
+            <to-view-id>/pages/startup/secondStep.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+         <navigation-case>
+	        <from-outcome>thirdStep</from-outcome>
+            <to-view-id>/pages/startup/thirdStep.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+          <navigation-case>
+	        <from-outcome>demo</from-outcome>
+            <to-view-id>/pages/startup/demo.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <!-- Friends Interaction: /pages/friend  -->
+        
+         <navigation-case>
+	        <from-outcome>findFriend</from-outcome>
+            <to-view-id>/pages/friend/findFriend.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        <navigation-case>
+	        <from-outcome>myFriends</from-outcome>
+            <to-view-id>/pages/friend/myFriends.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+
+        <navigation-case>
+	        <from-outcome>groups</from-outcome>
+            <to-view-id>/pages/friend/groups.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+        
+        <!-- Establishment pages: /pages/events  -->
+        
+         <navigation-case>
+	        <from-outcome>newEvent</from-outcome>
+            <to-view-id>/pages/event/new.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>listEvents</from-outcome>
+            <to-view-id>/pages/event/list.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        
+          <!-- Establishment pages: /pages/establishment  -->
+        
+        <navigation-case>
+	        <from-outcome>establishmentMain</from-outcome>
+            <to-view-id>/pages/establishment/main.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        <navigation-case>
+	        <from-outcome>establishmentSettings</from-outcome>
+            <to-view-id>/pages/establishment/settings.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        <navigation-case>
+	        <from-outcome>establishmentView</from-outcome>
+            <to-view-id>/pages/establishment/view.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        <navigation-case>
+	        <from-outcome>findEstablishment</from-outcome>
+            <to-view-id>/pages/establishment/findEstablishment.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        
+        <!-- Interactive Events  -->
+        
+         <navigation-case>
+	        <from-outcome>moment</from-outcome>
+            <to-view-id>/pages/interactive/moment.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        
+          <!-- Payment Events  -->
+        
+         <navigation-case>
+	        <from-outcome>payment</from-outcome>
+            <to-view-id>/pages/payment/payment.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+         <navigation-case>
+	        <from-outcome>paymentHistory</from-outcome>
+            <to-view-id>/pages/payment/history.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+        
+         <!-- Summary pages  -->
+        
+         <navigation-case>
+	        <from-outcome>about</from-outcome>
+            <to-view-id>/pages/summary/about.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+         <navigation-case>
+	        <from-outcome>terms</from-outcome>
+            <to-view-id>/pages/summary/terms.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>  
+         <navigation-case>
+	        <from-outcome>contact</from-outcome>
+            <to-view-id>/pages/summary/contact.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        
+        <!-- Mobile Flow  -->
+        
+          <navigation-case>
+	        <from-outcome>menuView</from-outcome>
+            <to-view-id>/pages/mobile/consume/menu.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        <navigation-case>
+	        <from-outcome>consumeView</from-outcome>
+            <to-view-id>/pages/mobile/consume/consume.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+       <navigation-case>
+	        <from-outcome>mobileSettings</from-outcome>
+            <to-view-id>/pages/mobile/config/settings.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        <navigation-case>
+	        <from-outcome>placeCheckin</from-outcome>
+            <to-view-id>/pages/mobile/place/checkin.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        <navigation-case>
+	        <from-outcome>placeCheckout</from-outcome>
+            <to-view-id>/pages/mobile/place/checkout.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        <navigation-case>
+	        <from-outcome>placeOptions</from-outcome>
+            <to-view-id>/pages/mobile/place/ido.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+         <navigation-case>
+	        <from-outcome>staff</from-outcome>
+            <to-view-id>/pages/mobile/staff/currentStaff.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case> 
+        
+        <!-- Errors Pages  -->
+        
+        <navigation-case>
+	        <from-outcome>fail</from-outcome>
+            <to-view-id>/errors/403.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>401</from-outcome>
+            <to-view-id>/errors/401.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>403</from-outcome>
+            <to-view-id>/errors/403.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>error</from-outcome>
+            <to-view-id>/errors/500.xhtml</to-view-id>
+            <redirect/>  
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

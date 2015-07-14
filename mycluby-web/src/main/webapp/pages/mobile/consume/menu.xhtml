@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<ui:define name="contentHead">
+		<title>#{label.title_admin_dash}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+			<div class="page-head height120">
+				<h2>Cardápio</h2>
+				<span class="pull-right"> <h:commandButton
+						style="float: right" styleClass="btn btn-primary"
+						value="Ver minha consumação" update="@form" action="consumeView"></h:commandButton>
+				</span>
+			</div>
+
+			<p:messages></p:messages>
+
+			<div class="cl-mcont">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tab-container" id="tabProfile">
+							<ul class="nav nav-tabs">
+								<ui:repeat var="cat" varStatus="status"
+									value="#{onSite.currentSession.establishment.categories}">
+
+									<ui:fragment rendered="${status.index == 0}">
+										<li class="active"><a data-toggle="tab"
+											href="#${cat.id}_${cat.name}">#{cat.name}</a></li>
+									</ui:fragment>
+									<ui:fragment rendered="${status.index != 0}">
+										<li><a data-toggle="tab" href="#${cat.id}_${cat.name}">#{cat.name}</a></li>
+									</ui:fragment>
+
+								</ui:repeat>
+							</ul>
+
+							<div class="tab-content cont">
+
+								<ui:repeat var="cat" varStatus="status"
+									value="#{onSite.currentSession.establishment.categories}">
+
+									<ui:fragment rendered="${status.index == 0}">
+										<div id="${cat.id}_${cat.name}" class="tab-pane active cont">
+											<div class="block">
+												<div class="header">
+													<h3>Para adicionar um item na sua Consuma por favor
+														solicite a um garçom</h3>
+												</div>
+												<div class="content no-padding">
+													<ul class="items mobileItems">
+														<ui:repeat var="prod" value="${cat.products}">
+															<a><li><i class="fa  fa-file-text"></i>${prod.name}<span
+																	class="pull-right value">R$ ${prod.price}</span></li></a>
+														</ui:repeat>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</ui:fragment>
+									<ui:fragment rendered="${status.index != 0}">
+										<div id="${cat.id}_${cat.name}" class="tab-pane cont">
+											<div class="block">
+												<div class="header">
+													<h3>Para adicionar um item na sua Consuma por favor
+														solicite a um garçom</h3>
+												</div>
+												<div class="content no-padding">
+													<ul class="items mobileItems">
+														<ui:repeat var="prod" value="${cat.products}">
+															<a><li><i class="fa  fa-file-text"></i>${prod.name}<span
+																	class="pull-right value">R$ ${prod.price}</span></li></a>
+														</ui:repeat>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</ui:fragment>
+
+								</ui:repeat>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

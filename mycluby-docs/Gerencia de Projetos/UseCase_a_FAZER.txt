@@ -1,0 +1,27 @@
+_______________________________________________________
+o	Relacionamentos:
+?	Visualizar informações de clientes em check-in;
+?	Enviar notificação para clientes;
+?	Visualizar sugestões de atendimento; retirar no doc..-------------------
+?	Vincular produto a comanda.
+
+estamos querendo tirar estes....
+
+________________________________________________________________________________
+o	Pagamentos: dono receber
+?	Efetuar liberação de comanda;
+liberar o cara que pagou,
+pre ter pago seus debitos. 
+
+?	Emitir notas de pagamento; caso alguém peça a nota fiscal, emite.
+
+?	Enviar e-mail com informações de pagamento.
+caso alguém solicite que seja enviado por email a nota fiscal do debito.
+_________________________________________________________________________________
+o	Relatórios:
+?	Emitir relatório geral por cliente;
+?	Emitir relatório geral por dia;
+?	Emitir relatório geral por período;
+?	Emitir relatório de funcionário;
+?	Emitir relatório de consumos;
+?	Emitir relatório de pagamentos.

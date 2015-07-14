@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{events.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form enctype="multipart/form-data">
+
+			<div class="container-fluid">
+				<div class="page-head height120">
+					<h2>Cadastrar novo Evento</h2>
+					<span class="pull-right"> <h:commandButton
+							style="float: right" styleClass="btn btn-success"
+							value="Publicar" update="@form"></h:commandButton>
+					</span>
+				</div>
+
+				<div class="cl-mcont">
+
+					<p:messages></p:messages>
+
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="block-flat">
+								<div class="header">
+									<h3>Dados do Evento</h3>
+								</div>
+								<div class="content form-horizontal group-border-dashed">
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Título:</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{events.currentEvent.title}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Local:</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{events.currentEvent.type}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Data:</label>
+										<div class="calendar">
+											<p:calendar pattern="dd/MM/yyyy" required="true"
+												value="#{events.currentEvent.date}" id="birthDate" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Sobre:</label>
+										<h:inputTextarea styleClass="form-control" id="text"
+											value="#{events.currentEvent.description}" required="true"
+											maxlength="45">
+										</h:inputTextarea>
+									</div>
+
+									<div class="form-group">
+										<label>Imagem do Evento:</label>
+										<div class="well">
+											<p>
+												<p:fileUpload styleClass="mt10" value="#{events.img}"
+													style="display:initial !important;" mode="simple" />
+											</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="panelButtons">
+						<h:commandButton style="float: right" styleClass="btn btn-success"
+							value="Publicar" update="@form"
+							actionListener="#{events.createEvent}"></h:commandButton>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

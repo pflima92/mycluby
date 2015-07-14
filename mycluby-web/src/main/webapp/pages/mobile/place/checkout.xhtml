@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="page-head height120">
+				<h2>Fazer Check-Out</h2>
+				<span class="pull-right"> <a class="btn btn-default"
+					onclick="PF('dlg').show();"> <i class="fa fa-sign-out"></i>Efetuar
+						Check-Out
+				</a>
+				</span>
+			</div>
+
+
+			<p:dialog header="Efetuar Check-Out" modal="true" widgetVar="dlg"
+				minimizable="false" resizable="false" id="confirmCheckin">
+				<br />
+				<h4>Informações do Check-Out</h4>
+				<br/>
+				<p>
+					Deseja efetuar o Check-Out em: <b>#{onSite.currentSession.establishment.name}</b>
+				</p>
+				<p>
+					<label>Hora de Check-In:</label> <b><h:outputText
+							value="#{onSite.currentSession.checkIn}">
+							<f:convertDateTime  pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo" ></f:convertDateTime>
+						</h:outputText></b><br /> <label>Hora de Check-Out:</label> <b><h:outputText
+							value="#{core.now}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo" ></f:convertDateTime>
+						</h:outputText></b>
+				</p>
+				<h4>Avaliação de Atendimento</h4>
+				<br/>
+				<p>
+					<label>Avaliação:</label><p:rating value="#{onSite.currentSession.rating}" ></p:rating>
+					<br/>
+					<label>Comentário:</label>
+					<br/>
+					<h:inputTextarea  value="#{onSite.currentSession.commentary}" ></h:inputTextarea> 
+				</p>
+				<hr />
+				<div class="panelButtons" align="center">
+					<h:commandButton styleClass="btn btn-success btn-lg"
+						value="Finalizar" update="@form" action="#{onSite.checkOut}"></h:commandButton>
+				</div>
+			</p:dialog>
+
+			<div class="cl-mcont">
+			
+			<p:messages></p:messages>
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>O que foi registrado até agora</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+
+
+								<div class="block">
+									<div class="header">
+										<h2>
+											Comando <span class="pull-right">##{onSite.currentSession.consume.id} </span>
+										</h2>
+										<h3>Seu comando está:
+											#{onSite.currentSession.consume.labelStatus}</h3>
+									</div>
+									<div class="content no-padding ">
+										<ul class="items">
+											<ui:repeat var="sale"
+												value="#{onSite.currentSession.consume.sales}">
+												<li><i class="fa fa-file-text"></i>#{sale.product.name}
+													<span class="pull-right value">R$ <h:outputText
+															value="#{sale.product.price}"
+															rendered="#{!sale.promotional}" /> <h:outputText
+															value="#{sale.product.promotional}"
+															rendered="#{sale.promotional}" /></span> <small>#{sale.product.categorie.name}</small></li>
+											</ui:repeat>
+										</ul>
+									</div>
+									<div class="total-data bg-blue">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<h2>
+												Total <b class="caret"></b> <span class="pull-right">R$ #{onSite.currentSession.consume.totalAmount}</span>
+											</h2>
+										</a>
+										<ul class="dropdown-menu">
+											<li><h:commandLink  immediate="true" value="Enviar por email"
+						actionListener="#{onSite.sendConsume}"></h:commandLink></li>
+											<li><h:commandLink rendered="#{onSite.closeConsumeAvailable}"
+						action="payment">
+						<i class="fa fa-sign-out"></i>Fechar Consumação </h:commandLink></li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

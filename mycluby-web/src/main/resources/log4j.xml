@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "org/apache/log4j/xml/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+	<appender name="Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n" />
+		</layout>
+	</appender>
+	<appender name="DebugAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="applog/myclub-portal-web.log" />
+		<param name="MaxFileSize" value="10Mb" />
+		<param name="MaxBackupIndex" value="3" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d][%p][%t][%c{1}] %m%n" />
+		</layout>
+	</appender>
+	<logger name="TRACE" additivity="false">
+         <level value="DEBUG" /> 
+        <appender-ref ref="DebugAppender" />
+        <appender-ref ref="Console" />
+    </logger>
+	<logger name="DEBUGGER" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="Console" /> 
+        <appender-ref ref="DebugAppender" />
+    </logger>
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="DebugAppender" />
+		<appender-ref ref="Console" />
+	</root>
+</log4j:configuration>

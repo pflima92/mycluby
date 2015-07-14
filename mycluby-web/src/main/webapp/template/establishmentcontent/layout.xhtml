@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+
+	<f:view encoding="ISO-8859-1"></f:view>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800'
+		rel='stylesheet' type='text/css' />
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100'
+		rel='stylesheet' type='text/css' />
+	<link
+		href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700'
+		rel='stylesheet' type='text/css' />
+
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico"
+		type="image/x-icon" />
+
+	<h:outputStylesheet library="css" name="pygments.css" />
+	<h:outputStylesheet library="js"
+		name="jquery.nanoscroller/nanoscroller.css" />
+	<h:outputStylesheet library="js"
+		name="bootstrap.switch/bootstrap-switch.css" />
+	<h:outputStylesheet library="js" name="bootstrap.slider/css/slider.css" />
+	<h:outputStylesheet library="js"
+		name="bootstrap/dist/css/bootstrap.css" />
+	<h:outputStylesheet
+		name="webjars/font-awesome/4.0.3/css/font-awesome.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+
+	<!-- Imports resources of JavaScript -->
+
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />
+	<h:outputScript library="js"
+		name="jquery.nanoscroller/jquery.nanoscroller.js" />
+	<h:outputScript library="js" name="behaviour/general.js" />
+	<h:outputScript library="js"
+		name="jquery.sparkline/jquery.sparkline.min.js" />
+	<h:outputScript library="js" name="jquery.nestable/jquery.nestable.js" />
+	<h:outputScript library="js"
+		name="bootstrap.switch/bootstrap-switch.min.js" />
+	<h:outputScript library="js" name="skycons/skycons.js" />
+	<h:outputScript library="js"
+		name="bootstrap.slider/js/bootstrap-slider.js" />
+	<h:outputScript library="js" name="bootstrap/dist/js/bootstrap.min.js" />
+	<script
+		src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false" />
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<ui:insert name="contentHead" />
+
+</h:head>
+<h:body>
+
+	<script type="text/javascript">
+		jQuery.noConflict();
+		jQuery(document).ready(function($) {
+			App.init();
+			App.dashBoard();
+		});
+
+		try {
+			PrimeFaces.locales['pt_BR'] = {
+				closeText : 'Fechar',
+				prevText : 'Anterior',
+				nextText : 'Próximo',
+				currentText : 'Começo',
+				monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril',
+						'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
+						'Outubro', 'Novembro', 'Dezembro' ],
+				monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+						'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+				dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+						'Sexta', 'Sábado' ],
+				dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex',
+						'Sáb' ],
+				dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+				weekHeader : 'Semana',
+				firstDay : 1,
+				isRTL : false,
+				showMonthAfterYear : false,
+				yearSuffix : '',
+				timeOnlyTitle : 'Só Horas',
+				timeText : 'Tempo',
+				hourText : 'Hora',
+				minuteText : 'Minuto',
+				secondText : 'Segundo',
+				currentText : 'Data Atual',
+				ampm : false,
+				month : 'Mês',
+				week : 'Semana',
+				day : 'Dia',
+				allDayText : 'Todo Dia'
+			};
+		} catch (e) {
+			//Primefaces is not loaded
+		}
+	</script>
+
+	<div id="header">
+		<ui:include src="header.xhtml" />
+	</div>
+
+	<div id="menu">
+		<ui:include src="menu.xhtml" />
+	</div>
+
+	<div id="content">
+		<div class="container-fluid" id="pcont">
+			<ui:insert name="content"></ui:insert>
+		</div>
+	</div>
+
+	<div id="footer">
+		<ui:include src="footer.xhtml" />
+	</div>
+
+</h:body>
+</html>

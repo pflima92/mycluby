@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12839225897960" configfile="/mycluby-web/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="payment.xhtml" x="122" y="783" id="pf128417776012122" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="payment.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="122" y="1772" id="pf128417779137424" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" path="register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="page2.xhtml" x="122" y="2762" id="pf128430768814316" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="page2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/index.html" x="122" y="7727" id="pf13759145033420" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14075955474401 pf14075955474402 pf14075955474418 pf140759554744114 pf140759554744115 pf140759554744116 pf140759554744117 pf140759554744118 pf14079703395380 pf14092793838260 pf14092793838261 pf14092793838262 pf14092793838263 pf14092793838264 pf14092793838265 pf14092793838266 pf14092793838267 pf14092793838268 pf14092793838269 pf140927938382610 pf140927938382611 pf140927938382612 pf140927938382613 pf140927938382614 pf140927938382615 pf140927938382616 pf140927938382617 pf140927938382618 pf140927938382619 pf140927938382621 pf140927938382622 pf140927938382623 pf140927938382624 pf140927938382625 pf140927938382626 pf140927938382628 pf140927938382629 pf140927938382630 pf140927938382631 pf14126451197940 pf14126451197941 pf14126451197942 pf14126451197943" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/form.html" x="122" y="3753" id="pf13793754991290" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" path="/pages/form.html"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/login.xhtml" x="338" y="178" id="pf140759554744120" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14075955474401" path="/pages/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/index.xhtml" x="338" y="562" id="pf140759554744121" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14075955474402" path="/pages/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/createAccount.xhtml" x="122" y="4745" id="pf140759554744122" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" path="/pages/account/createAccount.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/createAccountPending.xhtml" x="122" y="5738" id="pf140759554744123" referenceLink="//@navigationRule.0/@navigationCase.7/@toViewId|" path="/pages/account/createAccountPending.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/forgivePass.xhtml" x="122" y="6732" id="pf140759554744124" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" path="/pages/account/forgivePass.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/forgivePassSolicitation.xhtml" x="122" y="8381" id="pf140759554744125" referenceLink="//@navigationRule.0/@navigationCase.9/@toViewId|" path="/pages/account/forgivePassSolicitation.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/passSolicitationSuccess.xhtml" x="122" y="9036" id="pf140759554744126" referenceLink="//@navigationRule.0/@navigationCase.10/@toViewId|" path="/pages/account/passSolicitationSuccess.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/profile.xhtml" x="338" y="946" id="pf140759554744127" referenceLink="//@navigationRule.0/@navigationCase.9/@toViewId|" inlinks="pf14075955474418" path="/pages/account/profile.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/editProfile.xhtml" x="122" y="9692" id="pf140759554744128" referenceLink="//@navigationRule.0/@navigationCase.12/@toViewId|" path="/pages/account/editProfile.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/firstStep.xhtml" x="122" y="10349" id="pf140759554744129" referenceLink="//@navigationRule.0/@navigationCase.13/@toViewId|" path="/pages/account/firstStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/secondStep.xhtml" x="122" y="11007" id="pf140759554744130" referenceLink="//@navigationRule.0/@navigationCase.14/@toViewId|" path="/pages/account/secondStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/thirdStep.xhtml" x="122" y="11666" id="pf140759554744131" referenceLink="//@navigationRule.0/@navigationCase.15/@toViewId|" path="/pages/account/thirdStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/demo.xhtml" x="122" y="12326" id="pf140759554744132" referenceLink="//@navigationRule.0/@navigationCase.16/@toViewId|" path="/pages/account/demo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/friend/findFriend.xhtml" x="338" y="1330" id="pf140759554744133" referenceLink="//@navigationRule.0/@navigationCase.18/@toViewId|" inlinks="pf140759554744114" path="/pages/friend/findFriend.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="errors/403.xhtml" x="338" y="1714" id="pf140759554744134" referenceLink="//@navigationRule.0/@navigationCase.41/@toViewId|" inlinks="pf140759554744115 pf140759554744117" path="/errors/403.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="errors/401.xhtml" x="338" y="2098" id="pf140759554744135" referenceLink="//@navigationRule.0/@navigationCase.40/@toViewId|" inlinks="pf140759554744116" path="/errors/401.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="errors/500.xhtml" x="338" y="2482" id="pf140759554744136" referenceLink="//@navigationRule.0/@navigationCase.42/@toViewId|" inlinks="pf140759554744118" path="/errors/500.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/createAccount.xhtml" x="122" y="12987" id="pf140759554744137" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" path="/pages/establishment/createAccount.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/createEstablishmentPending.xhtml" x="122" y="13649" id="pf14076828694884" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" path="/pages/establishment/createEstablishmentPending.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/main.xhtml" x="338" y="2866" id="pf14079703395382" referenceLink="//@navigationRule.0/@navigationCase.23/@toViewId|" inlinks="pf14079703395380" path="/pages/establishment/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/establishmentSettings.xhtml" x="122" y="14312" id="pf14079703395383" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" path="/pages/establishment/establishmentSettings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/starting/establishment/signup.xhtml" x="338" y="3250" id="pf140927938382732" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14092793838260" path="/pages/starting/establishment/signup.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/starting/establishment/pending.xhtml" x="338" y="3634" id="pf140927938382733" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf14092793838261" path="/pages/starting/establishment/pending.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/starting/user/signup.xhtml" x="338" y="4018" id="pf140927938382734" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf14092793838262" path="/pages/starting/user/signup.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/starting/user/pending.xhtml" x="338" y="4402" id="pf140927938382735" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf14092793838263" path="/pages/starting/user/pending.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/help/forgivePass.xhtml" x="338" y="4786" id="pf140927938382736" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf14092793838264" path="/pages/help/forgivePass.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/help/forgivePassSuccess.xhtml" x="338" y="5170" id="pf140927938382737" referenceLink="//@navigationRule.0/@navigationCase.7/@toViewId|" inlinks="pf14092793838265" path="/pages/help/forgivePassSuccess.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/help/help.xhtml" x="338" y="5554" id="pf140927938382738" referenceLink="//@navigationRule.0/@navigationCase.8/@toViewId|" inlinks="pf14092793838266" path="/pages/help/help.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/edit.xhtml" x="338" y="5938" id="pf140927938382739" referenceLink="//@navigationRule.0/@navigationCase.10/@toViewId|" inlinks="pf14092793838267" path="/pages/account/edit.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/messages.xhtml" x="338" y="6322" id="pf140927938382740" referenceLink="//@navigationRule.0/@navigationCase.11/@toViewId|" inlinks="pf14092793838268" path="/pages/account/messages.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/pictures.xhtml" x="338" y="6706" id="pf140927938382741" referenceLink="//@navigationRule.0/@navigationCase.12/@toViewId|" inlinks="pf14092793838269" path="/pages/account/pictures.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/account/settings.xhtml" x="338" y="7090" id="pf140927938382742" referenceLink="//@navigationRule.0/@navigationCase.13/@toViewId|" inlinks="pf140927938382610" path="/pages/account/settings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/startup/firstStep.xhtml" x="338" y="7474" id="pf140927938382743" referenceLink="//@navigationRule.0/@navigationCase.14/@toViewId|" inlinks="pf140927938382611" path="/pages/startup/firstStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/startup/secondStep.xhtml" x="338" y="7858" id="pf140927938382744" referenceLink="//@navigationRule.0/@navigationCase.15/@toViewId|" inlinks="pf140927938382612" path="/pages/startup/secondStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/startup/thirdStep.xhtml" x="338" y="8242" id="pf140927938382745" referenceLink="//@navigationRule.0/@navigationCase.16/@toViewId|" inlinks="pf140927938382613" path="/pages/startup/thirdStep.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/startup/demo.xhtml" x="338" y="8626" id="pf140927938382746" referenceLink="//@navigationRule.0/@navigationCase.17/@toViewId|" inlinks="pf140927938382614" path="/pages/startup/demo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/friend/myFriends.xhtml" x="338" y="9010" id="pf140927938382747" referenceLink="//@navigationRule.0/@navigationCase.19/@toViewId|" inlinks="pf140927938382615" path="/pages/friend/myFriends.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/friend/groups.xhtml" x="338" y="9394" id="pf140927938382748" referenceLink="//@navigationRule.0/@navigationCase.20/@toViewId|" inlinks="pf140927938382616" path="/pages/friend/groups.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/settings.xhtml" x="338" y="9778" id="pf140927938382749" referenceLink="//@navigationRule.0/@navigationCase.24/@toViewId|" inlinks="pf140927938382617" path="/pages/establishment/settings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/interactive/moment.xhtml" x="338" y="10162" id="pf140927938382750" referenceLink="//@navigationRule.0/@navigationCase.26/@toViewId|" inlinks="pf140927938382618" path="/pages/interactive/moment.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/payment/payment.xhtml" x="338" y="10546" id="pf140927938382751" referenceLink="//@navigationRule.0/@navigationCase.27/@toViewId|" inlinks="pf140927938382619" path="/pages/payment/payment.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/payment/settings.xhtml" x="122" y="14976" id="pf140927938382752" referenceLink="//@navigationRule.0/@navigationCase.26/@toViewId|" path="/pages/payment/settings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/payment/history.xhtml" x="338" y="10930" id="pf140927938382753" referenceLink="//@navigationRule.0/@navigationCase.28/@toViewId|" inlinks="pf140927938382621" path="/pages/payment/history.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/summary/about.xhtml" x="338" y="11314" id="pf140927938382754" referenceLink="//@navigationRule.0/@navigationCase.29/@toViewId|" inlinks="pf140927938382622" path="/pages/summary/about.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/summary/terms.xhtml" x="338" y="11698" id="pf140927938382755" referenceLink="//@navigationRule.0/@navigationCase.30/@toViewId|" inlinks="pf140927938382623" path="/pages/summary/terms.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/summary/contact.xhtml" x="338" y="12082" id="pf140927938382756" referenceLink="//@navigationRule.0/@navigationCase.31/@toViewId|" inlinks="pf140927938382624" path="/pages/summary/contact.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/consume/menu.xhtml" x="338" y="12466" id="pf140927938382757" referenceLink="//@navigationRule.0/@navigationCase.32/@toViewId|" inlinks="pf140927938382625" path="/pages/mobile/consume/menu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/consume/consume.xhtml" x="338" y="12850" id="pf140927938382758" referenceLink="//@navigationRule.0/@navigationCase.33/@toViewId|" inlinks="pf140927938382626" path="/pages/mobile/consume/consume.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/consume/settings.xhtml" x="122" y="15641" id="pf140927938382759" referenceLink="//@navigationRule.0/@navigationCase.33/@toViewId|" path="/pages/mobile/consume/settings.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/place/checkin.xhtml" x="338" y="13234" id="pf140927938382760" referenceLink="//@navigationRule.0/@navigationCase.35/@toViewId|" inlinks="pf140927938382628" path="/pages/mobile/place/checkin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/place/checkout.xhtml" x="338" y="13618" id="pf140927938382761" referenceLink="//@navigationRule.0/@navigationCase.36/@toViewId|" inlinks="pf140927938382629" path="/pages/mobile/place/checkout.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/staff/currentStaff.xhtml" x="338" y="14002" id="pf140927938382762" referenceLink="//@navigationRule.0/@navigationCase.38/@toViewId|" inlinks="pf140927938382630" path="/pages/mobile/staff/currentStaff.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/place/ido.xhtml" x="338" y="14386" id="pf140927938382863" referenceLink="//@navigationRule.0/@navigationCase.37/@toViewId|" inlinks="pf140927938382631" path="/pages/mobile/place/ido.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/event/new.xhtml" x="338" y="14770" id="pf14126451197964" referenceLink="//@navigationRule.0/@navigationCase.21/@toViewId|" inlinks="pf14126451197940" path="/pages/event/new.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/event/list.xhtml" x="338" y="15154" id="pf14126451197965" referenceLink="//@navigationRule.0/@navigationCase.22/@toViewId|" inlinks="pf14126451197941" path="/pages/event/list.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/establishment/view.xhtml" x="338" y="15538" id="pf14126451197966" referenceLink="//@navigationRule.0/@navigationCase.25/@toViewId|" inlinks="pf14126451197942" path="/pages/establishment/view.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/mobile/config/settings.xhtml" x="338" y="15922" id="pf14126451197967" referenceLink="//@navigationRule.0/@navigationCase.34/@toViewId|" inlinks="pf14126451197943" path="/pages/mobile/config/settings.xhtml"/>
+  <links id="pf14075955474401" target="pf140759554744120" source="pf13759145033420" outcome="logout" redirect="true"/>
+  <links id="pf14075955474402" target="pf140759554744121" source="pf13759145033420" outcome="index" redirect="true"/>
+  <links id="pf14075955474418" target="pf140759554744127" source="pf13759145033420" outcome="profile" redirect="true"/>
+  <links id="pf140759554744114" target="pf140759554744133" source="pf13759145033420" outcome="findFriend" redirect="true"/>
+  <links id="pf140759554744115" target="pf140759554744134" source="pf13759145033420" outcome="fail" redirect="true"/>
+  <links id="pf140759554744116" target="pf140759554744135" source="pf13759145033420" outcome="401" redirect="true"/>
+  <links id="pf140759554744117" target="pf140759554744134" source="pf13759145033420" outcome="403" redirect="true"/>
+  <links id="pf140759554744118" target="pf140759554744136" source="pf13759145033420" outcome="error" redirect="true"/>
+  <links id="pf14079703395380" target="pf14079703395382" source="pf13759145033420" outcome="establishmentMain" redirect="true"/>
+  <links id="pf14092793838260" target="pf140927938382732" source="pf13759145033420" outcome="createEstablishment" redirect="true"/>
+  <links id="pf14092793838261" target="pf140927938382733" source="pf13759145033420" outcome="createEstablishmentPending" redirect="true"/>
+  <links id="pf14092793838262" target="pf140927938382734" source="pf13759145033420" outcome="createAccount" redirect="true"/>
+  <links id="pf14092793838263" target="pf140927938382735" source="pf13759145033420" outcome="createAccountPending" redirect="true"/>
+  <links id="pf14092793838264" target="pf140927938382736" source="pf13759145033420" outcome="forgivePass" redirect="true"/>
+  <links id="pf14092793838265" target="pf140927938382737" source="pf13759145033420" outcome="passSolicitationSuccess" redirect="true"/>
+  <links id="pf14092793838266" target="pf140927938382738" source="pf13759145033420" outcome="help" redirect="true"/>
+  <links id="pf14092793838267" target="pf140927938382739" source="pf13759145033420" outcome="editProfile" redirect="true"/>
+  <links id="pf14092793838268" target="pf140927938382740" source="pf13759145033420" outcome="messages" redirect="true"/>
+  <links id="pf14092793838269" target="pf140927938382741" source="pf13759145033420" outcome="pictures" redirect="true"/>
+  <links id="pf140927938382610" target="pf140927938382742" source="pf13759145033420" outcome="settings" redirect="true"/>
+  <links id="pf140927938382611" target="pf140927938382743" source="pf13759145033420" outcome="firstStep" redirect="true"/>
+  <links id="pf140927938382612" target="pf140927938382744" source="pf13759145033420" outcome="secondStep" redirect="true"/>
+  <links id="pf140927938382613" target="pf140927938382745" source="pf13759145033420" outcome="thirdStep" redirect="true"/>
+  <links id="pf140927938382614" target="pf140927938382746" source="pf13759145033420" outcome="demo" redirect="true"/>
+  <links id="pf140927938382615" target="pf140927938382747" source="pf13759145033420" outcome="myFriends" redirect="true"/>
+  <links id="pf140927938382616" target="pf140927938382748" source="pf13759145033420" outcome="groups" redirect="true"/>
+  <links id="pf140927938382617" target="pf140927938382749" source="pf13759145033420" outcome="establishmentSettings" redirect="true"/>
+  <links id="pf140927938382618" target="pf140927938382750" source="pf13759145033420" outcome="moment" redirect="true"/>
+  <links id="pf140927938382619" target="pf140927938382751" source="pf13759145033420" outcome="payment" redirect="true"/>
+  <links id="pf140927938382621" target="pf140927938382753" source="pf13759145033420" outcome="paymentHistory" redirect="true"/>
+  <links id="pf140927938382622" target="pf140927938382754" source="pf13759145033420" outcome="about" redirect="true"/>
+  <links id="pf140927938382623" target="pf140927938382755" source="pf13759145033420" outcome="terms" redirect="true"/>
+  <links id="pf140927938382624" target="pf140927938382756" source="pf13759145033420" outcome="contact" redirect="true"/>
+  <links id="pf140927938382625" target="pf140927938382757" source="pf13759145033420" outcome="menuView" redirect="true"/>
+  <links id="pf140927938382626" target="pf140927938382758" source="pf13759145033420" outcome="consumeView" redirect="true"/>
+  <links id="pf140927938382628" target="pf140927938382760" source="pf13759145033420" outcome="placeCheckin" redirect="true"/>
+  <links id="pf140927938382629" target="pf140927938382761" source="pf13759145033420" outcome="placeCheckout" redirect="true"/>
+  <links id="pf140927938382630" target="pf140927938382762" source="pf13759145033420" outcome="staff" redirect="true"/>
+  <links id="pf140927938382631" target="pf140927938382863" source="pf13759145033420" outcome="placeOptions" redirect="true"/>
+  <links id="pf14126451197940" target="pf14126451197964" source="pf13759145033420" outcome="newEvent" redirect="true"/>
+  <links id="pf14126451197941" target="pf14126451197965" source="pf13759145033420" outcome="listEvents" redirect="true"/>
+  <links id="pf14126451197942" target="pf14126451197966" source="pf13759145033420" outcome="establishmentView" redirect="true"/>
+  <links id="pf14126451197943" target="pf14126451197967" source="pf13759145033420" outcome="mobileSettings" redirect="true"/>
+</pageflow:Pageflow>

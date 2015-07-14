@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/template/webcontent/simpleLogin.xhtml">
+
+	<ui:define name="contentHead">
+		<title>#{label.title_admin_login}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="block-flat">
+			<div class="header">
+				<h3 class="text-center">
+					<p:graphicImage styleClass="logo-img"
+						value="/resources/images/logo.png" alt="logo" />
+					#{label.title}
+				</h3>
+			</div>
+			<div>
+				<h:form style="margin-bottom: 0px !important;"
+					styleClass="form-horizontal">
+					<div class="content">
+						<h4 class="title">#{label.signInside}</h4>
+						<p:messages id="msg"></p:messages>
+
+						<div class="form-group">
+							<div class="col-sm-12">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user"></i></span>
+									<h:inputText id="mail" name="mail" required="true"
+										requiredMessage="#{label.requiredLogin}"
+										label="#{label.login}" styleClass="form-control"
+										value="#{loginController.login}" />
+									<p:watermark for="mail" value="#{label.textLogin}" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+									<p:password value="#{loginController.password}" id="password"
+										label="#{label.pass}" required="true"
+										requiredMessage="#{label.requiredPass}"
+										styleClass="form-control" />
+									<p:watermark for="password" value="#{label.textPassword}" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12">
+									<h:commandLink value="#{label.forgivePass}" action="#{loginController.forgivePass}" immediate="true"
+							class="forgivePassLabel"></h:commandLink>
+							</div>
+						</div>
+					</div>
+					<div class="foot">
+					
+						<p:commandButton styleClass="btn btn-default" process="@this"
+							action="#{loginController.createAccount}"
+							value="#{label.createNew}" />
+						<p:commandButton id="btnAction" styleClass="btn btn-primary"
+							update="msg" action="#{loginController.loginWeb}"
+							value="#{label.login}" />
+
+						<p:defaultCommand target="btnAction" />
+						<br/>
+						<h:commandLink value="Quero cadastrar meu estabelecimento!"
+							action="#{loginController.createEstablishment}" immediate="true"
+							class="mt10"></h:commandLink>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

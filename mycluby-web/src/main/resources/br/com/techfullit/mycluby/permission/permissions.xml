@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Techfull IT Services - Cloud Application Server - 2013 - Paulo Henrique 
+	Ferreira de Lima This is the configuration file access and permissions, it 
+	can be reset by primary key of destination page. -->
+
+<cas-security>
+
+	<!-- Cas Security API -->
+	<group id="errors" url="/errors/*" permit="all" deny="none"></group>
+	
+	<group id="account" url="/pages/account/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="establishment" url="/pages/establishment/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="friend" url="/pages/friend/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="event" url="/pages/event/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="interactive" url="/pages/interactive/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="mobile" url="/pages/mobile/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="payment" url="/pages/payment/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+	<group id="startup" url="/pages/startup/*" permit="all" deny="UNSIGNED"
+		onDeny="/pages/login.xhtml" verifySingle="false">
+	</group>
+
+	<group id="help" url="/pages/help/*" permit="all" verifySingle="false"></group>
+	<group id="starting" url="/pages/starting/*" permit="all" verifySingle="false"></group>
+	<group id="summary" url="/pages/summary/*" permit="all" verifySingle="false"></group>
+
+	<pages>
+		<page url="/pages/login.xhtml" permit="all" deny="LOGGED" onDeny="start" ></page>
+		<page url="/pages/index.xhtml" permit="all" deny="UNSIGNED"
+			onDeny="/pages/login.xhtml"></page>
+	</pages>
+
+</cas-security>
+ 
+
+
+<!-- <group id="account" url="/pages/establishment/*" permit="all"
+		deny="UNSIGNED" onDeny="/pages/login.xhtml" verifySingle="true">
+		<pages>
+			<page url="createAccount.xhtml" permit="all" deny="none"></page>
+			<page url="createEstablishmentPending.xhtml" permit="all" deny="none"></page>
+		</pages>
+	</group> -->

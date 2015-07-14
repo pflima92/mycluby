@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{onSite.paymentMessage}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="page-head">
+				<h2>Efetivar Pagamento</h2>
+			</div>
+
+
+			<div class="cl-mcont">
+
+				<p:messages></p:messages>
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{onSite.currentSession.establishment.name} -
+									Efetivação de Pagamento</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+								<div class="block-flat">
+									<div class="block">
+										<div class="header">
+											<h2>
+												Comando<span class="pull-right">##{onSite.currentSession.consume.id}</span>
+											</h2>
+											<h3>Seu comando
+												está:#{onSite.currentSession.consume.labelStatus}</h3>
+										</div>
+										<div class="content no-padding ">
+											<ul class="items">
+												<ui:repeat var="sale"
+													value="#{onSite.currentSession.consume.sales}">
+													<li><i class="fa fa-file-text"></i>#{sale.product.name}
+														<span class="pull-right value">R$ <h:outputText
+																value="#{sale.product.price}"
+																rendered="#{!sale.promotional}" /> <h:outputText
+																value="#{sale.product.promotional}"
+																rendered="#{sale.promotional}" /></span> <small>#{sale.product.categorie.name}</small></li>
+												</ui:repeat>
+											</ul>
+										</div>
+
+									</div>
+
+									<!-- <div class="form-group">
+										<label class="col-sm-3 control-label">Selecione o
+											Cartão:</label>
+										<h:selectOneMenu styleClass="form-control" style="width: 20%">
+											<f:selectItem itemLabel="5478 26** 12** ***1" itemValue="X" />
+										</h:selectOneMenu>
+									</div>
+ -->
+									<br />
+									<div class="form-group" style="float: right">
+
+										<h:panelGroup rendered="#{onSite.paymentAvailable}">
+
+											<a class="mt10 btn btn-default" onclick="PF('dlg').show();">
+												<i class="fa fa-sign-out"></i>Efetivar Pagamento
+											</a>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{!onSite.paymentAvailable}">
+										<h:commandLink styleClass="mt10 btn btn-default" action="placeCheckout"
+					 > <i class="fa fa-sign-out"></i>Efetuar
+						Check-Out
+				</h:commandLink>
+									</h:panelGroup>
+									</div>
+
+								</div>
+
+								<p:dialog header="Efetuar Pagamento" modal="true"
+									widgetVar="dlg" minimizable="false" resizable="false"
+									id="confirmCheckin">
+
+									<div class="panelButtons" align="center">
+										<h:commandButton styleClass="btn btn-lg" value="Cancelar"
+											update="@form"></h:commandButton>
+										<h:commandButton styleClass="btn btn-success btn-lg"
+											value="Pagar pelo Pague Seguro" update="@form"
+											actionListener="#{onSite.callPayment}"></h:commandButton>
+									</div>
+								</p:dialog>
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

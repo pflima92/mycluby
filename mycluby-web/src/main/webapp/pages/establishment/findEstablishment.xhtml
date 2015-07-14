@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{findFriend.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Encontrar um Estabelecimento</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>Encontrar um Estabelecimento</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+								<div class="form-group">
+									<p>Busque por seus estabelecimentos favoritos, encontre novos lugares, reuna a galera e marque um evento. Isso é viver a vida, isso é ser um membro, MyCluby.</p>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Nome do Estabelecimento</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45"
+											value="#{findFriend.mail}" style="width: 40%"></h:inputText>
+									</div>
+								</div>
+								<div class="form-group" style="padding-top: 10px">
+									<h:commandButton style="float: right"
+										styleClass="btn btn-primary" value="#{label.search}"
+										update="@form" actionListener="#{findEstablishments.findByName}"></h:commandButton>
+									<h:commandButton style="float: right"
+										styleClass="btn btn-default" value="#{label.back}"
+										action="firstStep"></h:commandButton>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<ui:repeat var="establishment" value="#{findEstablishments.establishments}">
+						<div class="col-sm-6 col-md-6">
+							<div class="block-flat">
+								<div class="header">
+									<h:commandLink actionListener="#{core.viewEstablishmentProfile}">
+										<f:attribute name="establishmentProfile" value="#{establishment}"></f:attribute>
+										<h3>#{establishment.name}</h3>
+									</h:commandLink>
+								</div>
+								<div class="content form-horizontal group-border-dashed">
+									<div class="form-group friendList">
+										<div class="imgProfile">
+											<img class="img-polaroid" alt="" style="height: 128px"
+												src="data:image/png;base64,#{establishment.profileImage}" />
+										</div>
+										<div class="well" style="min-height: 200px;">
+											<h6>#{establishment.city} - #{establishment.state} - #{establishment.country} </h6>
+											<h6>#{establishment.address}</h6> 
+											<h7>#{establishment.about}</h7>
+											<div class="actions mt10">
+											<p><label>Número de seguidores:</label> <h:outputText value=" #{empty viewEstablishment.establishment.favUsers ? 'Seja o primeiro a adicionar.' : viewEstablishment.establishment.favUsers.size() } " ></h:outputText> </p>
+												<p><label>Eventos Públicados:</label> <h:outputText value=" #{empty viewEstablishment.establishment.events ? 'Ainda não publicamos nada.' : viewEstablishment.establishment.events.size()} " ></h:outputText></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</ui:repeat>
+
+				</div>
+
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

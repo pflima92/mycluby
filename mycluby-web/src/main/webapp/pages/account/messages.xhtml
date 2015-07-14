@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Minhas Mensagens</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#chat-1" data-toggle="tab">Luiz Fernando</a></li>
+							<li><a href="#chat-2" data-toggle="tab">Aline Fernanda</a></li>
+							<li><a href="#" class="callChat" >+ Chamar Alguém</a></li>
+						</ul>
+						<div class="tab-content no-padding">
+							<div class="tab-pane active cont" id="chat-1">
+								<div class="chat-wi">
+									<div class="chat-space nano nscroller">
+										<div class="chat-content content">
+											<div class="chat-conv">
+												<img alt="" height="30" width="30" class="c-avatar ttip" title="${core.ctxInfo.currentEntity.firstname}"
+													src="data:image/png;base64,#{core.ctxInfo.currentEntity.profileImage}" />
+												<div class="c-bubble">
+													<div class="msg">Dae pia partiu Oktober?</div>
+													<div>
+														<small>13:00</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+											<div class="chat-conv sent">
+												<p:graphicImage styleClass="c-avatar ttip"
+													value="/resources/mock/luiz.jpg" data-toggle="tooltip"
+													title="Luiz Fernando" />
+												<div class="c-bubble">
+													<div class="msg">Tem que ver pia, tem entrega do tcc!</div>
+													<div>
+														<small>13:15</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+											<div class="chat-conv">
+												<img alt="" height="30" width="30" class="c-avatar ttip" title="${core.ctxInfo.currentEntity.firstname}"
+													src="data:image/png;base64,#{core.ctxInfo.currentEntity.profileImage}" />
+												<div class="c-bubble">
+													<div class="msg">Mas já não está quase tudo pronto?!</div>
+													<div>
+														<small>13:16</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+											<div class="chat-conv sent">
+												<p:graphicImage styleClass="c-avatar ttip"
+													value="/resources/mock/luiz.jpg" data-toggle="tooltip"
+													title="Luiz Fernando" />
+												<div class="c-bubble">
+													<div class="msg">Hahahahah! É verdade! sqn!</div>
+													<div>
+														<small>13:25</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="chat-in">
+										<form
+											action="http://198.57.247.231/~condorth/cleanzone/dfgdfg"
+											method="post" name="sd">
+											<input type="submit" value="ENVIAR"
+												class="btn btn-info pull-right" />
+											<div class="input">
+												<input type="text" placeholder="Enviar mensagem..."
+													name="msg" />
+											</div>
+											<div class="chat-tools">
+												<ul class="nav nav-pills">
+													<li class="active"><i class="fa fa-location-arrow"></i></li>
+													<li><i class="fa fa-camera"></i></li>
+													<li><i class="fa fa-microphone"></i></li>
+													<li><i class="fa fa-cloud"></i></li>
+												</ul>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane cont" id="chat-2">
+								<div class="chat-wi">
+									<div class="chat-space nano nscroller">
+										<div class="chat-content content">
+											<div class="chat-conv sent">
+												<img alt="" height="30" width="30" class="c-avatar ttip" title="${core.ctxInfo.currentEntity.firstname}"
+													src="data:image/png;base64,#{core.ctxInfo.currentEntity.profileImage}" />
+												<div class="c-bubble">
+													<div class="msg">Oi, se ta ai?</div>
+													<div>
+														<small>22:25</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+											<div class="chat-conv">
+												<p:graphicImage styleClass="c-avatar ttip"
+													value="/resources/mock/aline.jpg"
+													data-toggle="tooltip" title="Aline Fernanda" />
+												<div class="c-bubble">
+													<div class="msg">Hei, to sim. Partiu onde hj?</div>
+													<div>
+														<small>22:28</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+											<div class="chat-conv sent">
+												<img alt="" height="30" width="30" class="c-avatar ttip" title="${core.ctxInfo.currentEntity.firstname}"
+													src="data:image/png;base64,#{core.ctxInfo.currentEntity.profileImage}" />
+												<div class="c-bubble">
+													<div class="msg">Tudo certinho, fazendo tcc! Depois conversamos</div>
+													<div>
+														<small>22:29</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+										</div>
+										<div class="chat-conv">
+												<p:graphicImage styleClass="c-avatar ttip"
+													value="/resources/mock/aline.jpg"
+													data-toggle="tooltip" title="Aline Fernanda" />
+												<div class="c-bubble">
+													<div class="msg">s2 Ta bom amo!</div>
+													<div>
+														<small>22:30</small>
+													</div>
+													<span></span>
+												</div>
+											</div>
+									</div>
+									<div class="chat-in">
+										<form
+											action="http://198.57.247.231/~condorth/cleanzone/dfgdfg"
+											method="post" name="sd">
+											<input type="submit" value="ENVIAR"
+												class="btn btn-info pull-right" />
+											<div class="input">
+												<input type="text" placeholder="Enviar mensagem..."
+													name="msg" />
+											</div>
+											<div class="chat-tools">
+												<ul class="nav nav-pills">
+													<li class="active"><i class="fa fa-location-arrow"></i></li>
+													<li><i class="fa fa-camera"></i></li>
+													<li><i class="fa fa-microphone"></i></li>
+													<li><i class="fa fa-cloud"></i></li>
+												</ul>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

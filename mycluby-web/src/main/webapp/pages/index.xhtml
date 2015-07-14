@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{viewProfile.loadUserContext}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title_admin_dash}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="cl-mcont">
+				<div class="row dash-cols">
+
+					<div class="row dash-cols">
+
+
+						<!-- 	<div class="col-sm-8 col-md-8 chat-wi" style="min-height: 185px;">
+							<div class="block block-publish">
+								<div class="header">
+									<h4>Publicar no MyCluby</h4>
+								</div>
+							</div>
+							<div class="chat-in">
+								<form action="http://198.57.247.231/~condorth/cleanzone/dfgdfg"
+									method="post" name="sd">
+									<input type="submit" value="ENVIAR"
+										class="btn btn-info pull-right" />
+									<div class="input">
+										<input type="text"
+											placeholder="Diga o que você está pensando ou pretende de bom agora..."
+											name="msg" />
+									</div>
+									<div class="chat-tools">
+										<ul class="nav nav-pills">
+											<li class="active"><i class="fa fa-location-arrow"></i></li>
+											<li><i class="fa fa-camera"></i></li>
+											<li><i class="fa fa-microphone"></i></li>
+											<li><i class="fa fa-cloud"></i></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div> -->
+
+						<!-- <div class="col-sm-4 col-md-4 pull-right">
+							<div class="block block-mini-publish">
+								<div class="header">
+									<h5>MyCluby Party - Arena MyCluby Center</h5>
+									<h6>
+										Inauguração da Arena de Shows MyCluby Center, não perca! <span
+											class="pull-right"><b><a href="#">Saiba
+													mais...</a></b></span>
+									</h6>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4 col-md-4 pull-right">
+							<div class="block block-mini-publish">
+								<div class="header">
+									<h5>Paulo Henrique - Confirmou presença em Santa Marta Bar</h5>
+									<h6>
+										#Partiu! <span class="pull-right"><b><h:commandLink
+													action="establishmentView">Quero
+												ver...</h:commandLink></b></span>
+									</h6>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4 col-md-4 pull-right">
+							<div class="block block-mini-publish">
+								<div class="header">
+									<h5>AC/DC - Pedreira Paulo Leminski</h5>
+									<h6>
+										Vai bombar hoje na Pedreira #Promete <span class="pull-right"><b><a
+												href="#">Quero ver...</a></b></span>
+									</h6>
+								</div>
+							</div>
+						</div> -->
+
+						<!-- <div class="col-sm-8 col-md-8 chat-wi mt10">
+							<div class="block block-publish" style="min-height: 300px">
+								<div class="header">
+									<h2>
+										DOMINGUEIRA SERTANEJA <span class="pull-right">dia
+											07/09</span>
+									</h2>
+									<h3>
+										Santa Marta Bar - Curitiba <span class="pull-right"><b>2
+												minutos atrás</b></span>
+									</h3>
+								</div>
+								<div class="col-md-6 padding white-box publish-image"
+									style="background-image: url(data:image/png;base64,#{event.imageConverted})">
+								</div>
+								<div class="col-md-6 padding blue-box publish-text">
+									<div class="padding text-center">
+										<p>A Santa domingueira Sertaneja, que ocorre toda semana,
+											recebe no palco da casa os melhores artistas locais do
+											gênero.</p>
+									</div>
+									<div class="details">
+										<ul>
+											<li class="tipo"><span itemprop="eventType">Show</span>:
+												<strong>Domingueira Sertaneja</strong></li>
+											<li class="cidade">Cidade: <strong>Curitiba /
+													PR</strong></li>
+											<li class="data" title="(07/09/2014)">Data: <strong><time
+														itemprop="startDate" datetime="2014-08-30">07 de
+													Setembro de 2014</time></strong> - Domingo
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="chat-in">
+								<form action="http://198.57.247.231/~condorth/cleanzone/dfgdfg"
+									method="post" name="sd">
+									<input type="submit" value="ENVIAR"
+										class="btn btn-info pull-right" />
+									<div class="input">
+										<input type="text"
+											placeholder="Diga o que pensa a respeito..." name="msg" />
+									</div>
+									<div class="chat-tools">
+										<ul class="nav nav-pills">
+											<li class="active"><i class="fa fa-location-arrow"></i></li>
+											<li><i class="fa fa-camera"></i></li>
+											<li><i class="fa fa-microphone"></i></li>
+											<li><i class="fa fa-cloud"></i></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+ -->
+
+						<h:panelGroup rendered="#{empty viewProfile.currentUserEvents}">
+
+							<div class="col-sm-4 col-md-12  mt10">
+								<div class="block block-publish">
+									<div class="header">
+										<h2>Você não possui nenhuma publicação!</h2>
+										<h3>Fique atento às novidades do MyCluby.</h3>
+									</div>
+									<div class="blue-box">
+										<br />
+										<h3 style="text-align: center" class="mt10">Encontre
+											amigos e seus estabelecimentos favoritos, para estar por dentro de tudo...</h3>
+										<br />
+									</div>
+								</div>
+							</div>
+						</h:panelGroup>
+
+						<ui:repeat var="event" value="#{viewProfile.currentUserEvents}">
+
+							<div class="col-sm-12 col-md-12 chat-wi mt10">
+								<div class="block block-publish" style="min-height: 300px">
+									<div class="header">
+										<h2>
+											#{event.title} <span class="pull-right">ta marcado
+												para <h:outputText value="#{event.date}">
+													<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+												</h:outputText>
+											</span>
+										</h2>
+										<h3>
+											#{event.type}
+											<!-- <span class="pull-right"><b>39
+												minutos atrás</b></span> -->
+										</h3>
+									</div>
+									<div class="col-md-6 padding white-box publish-image"
+										style="background-size: cover; background-image: url(data:image/png;base64,#{event.imageConverted});">
+									</div>
+									<div class="col-md-6 padding blue-box publish-text">
+										<div class="padding text-center">
+											<h4>#{event.description}</h4>
+										</div>
+										<div class="details">
+											<ul>
+												<li class="tipo"><span itemprop="eventType">Evento</span>:
+													<strong>#{event.title}</strong></li>
+												<li class="cidade">Cidade: <strong>#{event.type}</strong></li>
+												<li class="data" title="(07/09/2014)">Data: <strong><h:outputText
+															value="#{event.date}">
+															<f:convertDateTime pattern="dd/MM/yyyy - EEEE"></f:convertDateTime>
+														</h:outputText></strong>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						</ui:repeat>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

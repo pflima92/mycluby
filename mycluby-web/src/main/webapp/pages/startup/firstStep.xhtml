@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{firstStep.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>#{label.welcome} - #{label.fistSteps}</h2>
+		</div>
+
+		<h:form enctype="multipart/form-data">
+
+			<div class="cl-mcont">
+
+				<p:messages></p:messages>
+
+				<div class="row">
+
+					<div class="col-sm-6 col-md-6">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.knowYou}</h3>
+							</div>
+							<div class="content" style="min-height: 210px">
+
+								<div class="form-group">
+									<label>#{label.your}&nbsp;#{label.firstname}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{firstStep.user.firstname}" />
+								</div>
+								<div class="form-group">
+									<label>#{label.your}&nbsp;#{label.lastname}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{firstStep.user.lastname}" />
+								</div>
+								<div class="form-group">
+									<label>#{label.mail}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{firstStep.user.mails[0].value}" />
+								</div>
+								<div class="form-group">
+									<label>#{label.dateBirth}</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{firstStep.user.birthDate}">
+										<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+									</h:outputText>
+								</div>
+								<p>#{label.firstInformation}</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.seeYou}</h3>
+							</div>
+							<div class="content" style="min-height: 210px">
+
+								<div class="imgProfile">
+									<img class="img-polaroid" alt=""
+										src="data:image/png;base64,#{firstStep.user.profileImage}" />
+								</div>
+								<div class="well" style="min-height: 180px;">
+									<h4>#{label.selectImgProfile}</h4>
+									<p>#{label.textImgProfile}</p>
+									<p>
+										<p:fileUpload value="#{firstStep.img}"
+											style="display:initial !important;" mode="simple" />
+									</p>
+									<h:commandLink actionListener="#{firstStep.uploadFile}"
+										update="@form" value="#{label.changeImgProfile}"></h:commandLink>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panelButtons">
+					<h:commandButton style="float: right"
+						styleClass="btn btn-primary btn-lg" value="#{label.advance}"
+						update="@form" action="#{firstStep.updateAccountContinue}"></h:commandButton>
+
+					<h:commandButton style="float: right"
+						styleClass="btn btn-default btn-lg" value="#{label.skip}"
+						action="index"></h:commandButton>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

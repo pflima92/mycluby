@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+	<meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+
+	<h:outputStylesheet library="js" name="bootstrap/dist/css/bootstrap.css" />
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" type="image/x-icon" />
+	<h:outputStylesheet name="webjars/font-awesome/4.0.3/css/font-awesome.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+	
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'/>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:300,200,100' rel='stylesheet' type='text/css'/>
+
+	<ui:insert name="contentHead" />
+
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico"
+		type="image/x-icon" />
+
+</h:head>
+<h:body class="texture">
+
+	<div id="cl-wrapper" class="error-container">
+		<div id="content">
+			<ui:insert name="content" />
+		</div>
+	</div>
+	<div class="text-center copy"><a>#{label.copyright}</a></div>
+</h:body>
+</html>

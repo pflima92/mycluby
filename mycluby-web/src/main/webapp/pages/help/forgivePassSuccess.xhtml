@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/template/webcontent/simple.xhtml">
+
+	<ui:define name="contentHead">
+		<title>#{label.title_createAccount}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="block-flat">
+			<div class="header">
+				<h3 class="text-center">
+					<p:graphicImage styleClass="logo-img"
+						value="/resources/images/logo.png" alt="logo" />
+					#{label.title}
+				</h3>
+			</div>
+			<div>
+				<h:form style="margin-bottom: 0px !important;" styleClass="form">
+					<div class="content">
+						<div class="header">
+							<h3>Só aguardar</h3>
+						</div>
+						<div class="content">
+							<div class="form-group">A equipe de suporte do MyCluby já
+								está providenciando seu acesso, você será notificado por email a
+								respeito da recuperação do seu acesso.</div>
+						</div>
+					</div>
+					<div class="foot">
+						<h:commandButton styleClass="btn btn-default" action="index"
+							value="#{label.backHome}" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

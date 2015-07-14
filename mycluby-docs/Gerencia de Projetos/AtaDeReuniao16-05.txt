@@ -1,0 +1,167 @@
+agendar novo evento = tipo face
+
+cadastrar evento;
+editar evento;
+cancelar evento;
+visualizar historico dos eventos criados;
+FEITO DIA 14/05/14 concluido 24/05 UC-11
+__________________________________________
+
+Lugares ou eventos de maior frequência;
+
+Eventos de maior frequancia;
+Ranking de 1 a 5 
+FEITO DIA 16/05/14 concluido 24/05 UC-12
+___________________________________________
+Pagamento
+cadastrar um cartao para pagamento
+editar dadaos do cartao
+excluir cartao cadastrado
+visualizar historicos de pagamentos anteriores
+FEITO DIA 17/05/14 concluido 24/05 UC-13
+___________________________________________
+
+Area para estabelecimento •MyCluby Social Web:
+cadastrar novo estabelecimento (pelo dono do estabelecimento ex:dono do Armazem)
+
+Manter estabelecimentos;?Gerenciar recursos à disposição dos clientes (recursos disponiveis ex:cardapio estara disponivel para visualizar, pagamento, pontos etc)
+Cadastrar publicações e eventos;eventos da casa (ex: nova festa azul)
+Manter publicações e eventos. editar, cancela festa.
+
+FEITO DIA 18/05/14 e 20/05 refeita, concluido 24/05 UC-14
+________________________________________________________________________________
+
+
+Efetuar Check-In em novo Lugar: (igual do face)abre uma lista de lugares cadastrados onde ele pode fazer check-in
+
+Feito dia 20/05 concluido 24/05 UC-15
+________________________________________________________________________________
+
+Configurar dados e notificações;
+configurar no aplicativo as opcoes o que vc quer quer receber, ex: novos eventos de amigos meus, novas publicaçoe de festas cadastradas.
+
+Feito dia 20/05 concluido 24/05 UC-16
+____________________________________________
+
+Visualizar cardápio:so visualizar
+Efetuar o pedido de novo item.retirar a parte de pedidos.
+
+Feito dia 20/05 concluido 24/05 UC-17
+____________________________________________
+
+Visualizar consumação;
+Receber notificações de novo item vinculado a consumação;
+Estabelecer limite de consumo;(so comunicar que ja gastou e dar uma mensgem de tem certeza que quer pedir.. )
+
+concluido 25/05 UC-18
+______________________________________________________________________________
+
+Visualizar informações atendente: mostrar lista de atendentes para que ele possa escolher: 
+
+1.Cadastrar comentário;sobre o atendimento que teve do atendente
+2.Ver histórico de outros comentarios feitos anteriormente
+
+concluido 25/05 UC-19
+______________________________________________________________________________	Notificações: clica em ver notificacao;
+Notificação de amigo disponível no local;
+Notificação de promoção;
+Notificação de novo Check-In (Individual ou publico);
+Receber notificação do evento.
+
+Pre requisito esta habilitado a funcao que ele quer receber.
+
+concluido 25/05 UC-19
+_______________________________________________________________________________
+
+Mensagens internas:
+Enviar mensagens (Grupos, Individual ou publicas);
+Visualizar Mensagens (Grupos, Individual ou publicas).
+lista de amigos, grupo, add mais amigo na conversa.
+ex: grupo do estabelecimento.
+
+se vc tiver marcado como publico vai aparecer na lista de mensagens pra conversa de todos que estão no local
+
+
+concluido 26/05 UC-20
+_________________________________________________
+Pagamento:
+Realizar Pagamento Online.
+abre tela de pagamento, com o valor que gastou, confirma os dados e apresenta a lista de gasto. 
+pagar com cartao. ok. mensagem pago, ou erro caso o cartoa nao seja aprovado; 
+
+
+pre requisito, pagamento ativo;
+usuario ter cadastrado um cartao pra pagamento;
+
+
+concluido 26/05 UC-21
+
+__________________________________________________
+Efetuar Check-Out.
+to saindo fui..
+
+pre requisito ter pago a conta; não ter debito
+
+
+concluido 26/05 UC-22
+
+__________________________________________________
+
+
+MyCluby Administrativo: (qualquer pessoa que gerencia o estabelecimento (ex: gerente))
+o	Tela de login;
+pre requisto, ter conta pra logar;
+
+
+concluido 27/05 UC-23
+___________________________________________________
+Funcionários:
+Cadastrar funcionário;
+Manter funcionário.
+
+
+concluido 02/06 Uc-24
+____________________________________________________
+Categorias:(bebidas, comida)
+Cadastrar categorias;
+Manter categorias;
+
+
+________________________________________________________________________________
+Produtos:(vinho, pinga etc)
+Cadastrar produto;
+Manter produto;
+
+________________________________________________________________________________
+Promoções ou pontos:()
+Cadastrar promoções ou pontos;
+Manter promoções ou pontos.
+
+pre requisito esta ativo a opçao pontos; ele vai receber uma pontuacao conforme estabelecido pelo cliente(recebe ex 5 clubs)
+pos acumula pontos.
+________________________________________________________________________________
+o	Relacionamentos:
+?	Visualizar informações de clientes em check-in;
+?	Enviar notificação para clientes;
+?	Visualizar sugestões de atendimento;
+?	Vincular produto a comanda.
+estamos querendo tirar estes....
+
+________________________________________________________________________________
+o	Pagamentos: dono receber
+?	Efetuar liberação de comanda;
+liberar o cara que pagou,
+pre ter pago seus debitos. 
+
+?	Emitir notas de pagamento; caso alguém peça a nota fiscal, emite.
+
+?	Enviar e-mail com informações de pagamento.
+caso alguém solicite que seja enviado por email a nota fiscal do debito.
+_________________________________________________________________________________
+o	Relatórios:
+?	Emitir relatório geral por cliente;
+?	Emitir relatório geral por dia;
+?	Emitir relatório geral por período;
+?	Emitir relatório de funcionário;
+?	Emitir relatório de consumos;
+?	Emitir relatório de pagamentos.

@@ -1,0 +1,27 @@
+agendar novo evento = tipo face
+
+cadastrar evento;
+editar evento;
+cancelar evento;
+visualizar historico dos eventos criados;
+FEITO DIA 14/05/14 CONCLUIR IDEM 4;
+__________________________________________
+
+Lugares ou eventos de maior frequência;
+
+Eventos de maior frequancia;
+Ranking de 1 a 5 
+
+fEITO EM 17/05
+___________________________________________
+Pagamento
+cadastrar um cartao para pagamento
+editar dadaos do cartao
+excluir cartao cadastrado
+visualizar historicos de pagamentos anteriores
+FEITO DIA 17/05 PRECISO CONCLUIR O ITEM 4.
+___________________________________________
+
+Area para estabelecimento
+cadastrar novo estabelecimento (pelo dono do estabelecimento)
+

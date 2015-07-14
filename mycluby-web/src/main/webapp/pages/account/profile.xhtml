@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{viewProfile.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}&nbsp;-#{viewProfile.user.firstname}&nbsp;#{viewProfile.user.lastname}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+
+
+			<div class="cl-mcont">
+				<div class="row">
+
+					<p:messages></p:messages>
+
+					<div class="col-md-12">
+						<div class="block-flat profile-info">
+							<div class="row">
+								<div class="col-sm-2">
+									<div class="avatar">
+										<img class="profile-avatar" alt=""
+											src="data:image/png;base64,#{viewProfile.user.profileImage}" />
+									</div>
+								</div>
+								<div class="col-sm-7">
+									<div class="personal">
+										<h1 class="name">#{viewProfile.user.firstname}&nbsp;#{viewProfile.user.lastname}</h1>
+										<p class="description">
+											#{viewProfile.user.about}
+
+											<p>
+												<h:panelGroup rendered="#{viewProfile.currentUser}">
+													<h:commandButton
+														styleClass="btn btn-primary btn-flat btn-rad"
+														value="#{label.editProfile}" action="editProfile"></h:commandButton>
+												</h:panelGroup>
+												<h:panelGroup rendered="#{!viewProfile.currentUser}">
+													<h:panelGroup rendered="#{!viewProfile.currentUserFriend}">
+
+														<h:commandButton actionListener="#{viewProfile.addFriend}"
+															update="@form"
+															styleClass="btn btn-primary btn-flat btn-rad"
+															value="#{label.addFriend}"></h:commandButton>
+
+														<!-- <h:commandButton styleClass="btn btn-default"
+															value="#{label.sendMessage}" action="index"></h:commandButton> -->
+													</h:panelGroup>
+													<h:panelGroup rendered="#{viewProfile.currentUserFriend}">
+														<h:commandButton
+															actionListener="#{viewProfile.removeFriend}"
+															update="@form"
+															styleClass="btn btn-primary btn-flat btn-rad"
+															value="#{label.removeFriend}"></h:commandButton>
+
+														<!-- <h:commandButton styleClass="btn btn-default"
+															value="#{label.sendMessage}" action="index"></h:commandButton> -->
+													</h:panelGroup>
+												</h:panelGroup>
+											</p>
+
+										</p>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<table class="no-border no-strip skills"
+										style="box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.13);">
+										<tbody class="no-border-x no-border-y">
+											<tr>
+												<td style="width: 45%;">Número de Amigos</td>
+												<td>#{viewProfile.user.friends.size()}</td>
+											</tr>
+											<tr>
+												<td>Estabelecimentos Favoritos</td>
+												<td>#{viewProfile.user.favEstablishments.size()}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="tab-container" id="tabProfile">
+							<ul class="nav nav-tabs">
+								<li class="active"><a data-toggle="tab" href="#home">Informações</a></li>
+								<li><a data-toggle="tab" href="#friends">Amigos</a></li>
+								<h:panelGroup rendered="#{viewProfile.currentUser}">
+									<li><a data-toggle="tab" href="#establishment">Estabelecimentos</a></li>
+								</h:panelGroup>
+							</ul>
+							<div class="tab-content">
+								<div id="home" class="tab-pane active cont">
+									<table class="no-border no-strip information">
+										<tbody class="no-border-x no-border-y">
+											<tr>
+												<td style="width: 20%;" class="category"><strong>PESSOAIS</strong></td>
+												<td>
+													<table class="no-border no-strip skills">
+														<tbody class="no-border-x no-border-y">
+															<tr>
+																<td style="width: 20%;"><b>#{label.gender}:</b></td>
+																<td><h:outputText
+																		value="#{viewProfile.user.genderLabel}" /></td>
+															</tr>
+															<tr>
+																<td style="width: 20%;"><b>#{label.dateBirth}:</b></td>
+																<td><h:outputText
+																		value="#{viewProfile.user.birthDate}">
+																		<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+																	</h:outputText></td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<tr />
+												<tr>
+													<td style="width: 20%;" class="category"><strong>CONTATO</strong></td>
+													<td>
+														<table class="no-border no-strip skills">
+															<tbody class="no-border-x no-border-y">
+																<tr>
+																	<td style="width: 20%;"><b>#{label.mail}:</b></td>
+																	<td><h:outputText
+																			value="#{viewProfile.user.mails[0].value}" /></td>
+																</tr>
+
+																<tr>
+																	<td style="width: 20%;"><b>#{label.phone}:</b></td>
+																	<td><h:outputText
+																			value="#{viewProfile.user.resPhone}" /> <h:outputText
+																			value="#{viewProfile.user.cellPhone}"
+																			styleClass="cntAftLbl" /> <h:outputText
+																			value="#{viewProfile.user.jobPhone}"
+																			styleClass="cntAftLbl" /></td>
+																</tr>
+
+																<tr>
+																	<td style="width: 20%;"><b>#{label.country}:</b></td>
+																	<td><h:outputText
+																			value="#{viewProfile.user.country}" /></td>
+																</tr>
+																<tr>
+																	<td style="width: 20%;"><b>#{label.state}:</b></td>
+																	<td><h:outputText
+																			value="#{viewProfile.user.state}" /></td>
+																</tr>
+																<tr>
+																	<td style="width: 20%;"><b>#{label.city}:</b></td>
+																	<td><h:outputText value="#{viewProfile.user.city}" /></td>
+																</tr>
+																<tr>
+																	<td style="width: 20%;"><b>#{label.address}:</b></td>
+																	<td><h:outputText
+																			value="#{viewProfile.user.address} - #{viewProfile.user.complement}" /></td>
+																</tr>
+
+
+
+															</tbody>
+														</table>
+													</td>
+												</tr>
+											</tr>
+											<tr>
+												<td class="category"><strong>SOBRE</strong></td>
+												<td><p>#{viewProfile.user.about}</p></td>
+											</tr>
+											<!-- <tr>
+												<td class="category"><strong>SOCIAL</strong></td>
+												<td>
+													<button class="btn btn-default btn-flat btn-facebook bg"
+														type="button">
+														<i class="fa fa-facebook"></i> <span>Facebook</span>
+													</button>
+													<button class="btn btn-default btn-flat btn-twitter bg"
+														type="button">
+														<i class="fa fa-twitter"></i> <span>Twitter</span>
+													</button>
+													<button class="btn btn-default btn-flat btn-google-plus bg"
+														type="button">
+														<i class="fa fa-google-plus"></i> <span>Google+</span>
+													</button>
+												</td>
+											</tr> -->
+
+
+										</tbody>
+									</table>
+								</div>
+								<div id="friends" class="tab-pane cont">
+									<div class="btn-group pull-right">
+										<button type="button" class="btn btn-sm btn-flat btn-default">
+											<i class="fa fa-angle-left"></i>
+										</button>
+										<button type="button" class="btn btn-sm btn-flat btn-default">
+											<i class="fa fa-angle-right"></i>
+										</button>
+									</div>
+									<div class="btn-group pull-right">
+										<button type="button"
+											class="btn btn-sm btn-flat btn-default dropdown-toggle"
+											data-toggle="dropdown">
+											Ordenar <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#">Email</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Grupo</a></li>
+										</ul>
+									</div>
+									<h:panelGroup rendered="#{viewProfile.currentUser}">
+										<h3 class="widget-title">Meus Amigos</h3>
+									</h:panelGroup>
+									<h:panelGroup rendered="#{!viewProfile.currentUser}">
+										<h3 class="widget-title">Ver Amigos</h3>
+									</h:panelGroup>
+
+									<div class="row friends-list">
+
+										<ui:repeat var="frnd" value="#{viewProfile.user.friends}">
+											<div class="col-sm-6 col-md-4" id="aline">
+												<div class="friend-widget">
+													<h:commandLink actionListener="#{core.viewUserProfile}">
+														<f:attribute name="userProfile" value="#{frnd}"></f:attribute>
+														<img title="#{frnd.firstname}" class="ttip"
+															data-toggle="tooltip"
+															src="data:image/png;base64,${frnd.profileImage}" />
+													</h:commandLink>
+													<h4>#{frnd.firstname} #{frnd.lastname}</h4>
+												</div>
+											</div>
+										</ui:repeat>
+									</div>
+								</div>
+								<div id="establishment" class="tab-pane">
+									<div class="row friends-list">
+
+										<ui:repeat var="est"
+											value="#{viewProfile.user.favEstablishments}">
+											<div class="col-sm-6 col-md-4" id="aline">
+												<div class="friend-widget">
+													<h:commandLink
+														actionListener="#{core.viewEstablishmentProfile}">
+														<f:attribute name="establishmentProfile" value="#{est}"></f:attribute>
+														<img title="#{est.name}" class="ttip"
+															data-toggle="tooltip"
+															src="data:image/png;base64,${est.profileImage}" />
+													</h:commandLink>
+													<h4>#{est.name}</h4>
+												</div>
+											</div>
+										</ui:repeat>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- <div class="block-transparent">
+						<div class="header">
+							<h4>Linha do tempo</h4>
+						</div>
+						<ul class="timeline">
+							<li><i class="fa fa-comment"></i> <span class="date">29
+									Ago</span>
+								<div class="content">
+									<p>
+										<strong>Jaqueline Talita</strong> marcou <strong>Você</strong>
+										você em um novo evento.
+									</p>
+									<small>1 minuto atrás</small>
+								</div></li>
+							<li><i class="fa fa-envelope green"></i> <span class="date">27
+									Ago</span>
+								<div class="content">
+									<i class="fa fa-paperclip pull-right"></i>
+									<p>
+										<strong>Aline Fernanda</strong><br />Marcou você em mais de
+										uma foto;
+									</p>
+									<a class="image-zoom" href="images/gallery/img4.jpg"> <p:graphicImage
+											value="/resources/mock/sunset2.jpg"
+											styleClass="img-thumbnail" style="height: 64px;" />
+									</a> <a class="image-zoom" href="images/gallery/img6.jpg"><p:graphicImage
+											value="/resources/mock/img1.jpg" styleClass="img-thumbnail"
+											style="height: 64px;" /></a>
+								</div></li>
+							<li><i class="fa fa-file red"></i> <span class="date">24
+									Ago</span>
+								<div class="content">
+									<p>
+										<strong>Luiz Fernando</strong> convidou você para um evento:
+									</p>
+									<blockquote>
+										<p>O cantor de mpb Nando Reis se apresentará na cidade de
+											Ponta Grossa/PR no dia 30 de Agosto de 2014, sábado.</p>
+										<small>30 de Agosto de 2014</small>
+									</blockquote>
+								</div></li>
+							<li><i class="fa fa-globe purple"></i><span class="date">10
+									Jun</span>
+								<div class="content">
+									<p>
+										<strong>Aline Fernanda</strong> Deixou uma mensagem para você.
+									</p>
+								</div></li>
+						</ul>
+					</div> -->
+					<ui:repeat var="event" value="#{viewProfile.user.events}">
+
+						<div class="col-sm-12 col-md-12 chat-wi mt10">
+							<div class="block block-publish" style="min-height: 300px">
+								<div class="header">
+									<h2>
+										#{event.title} <span class="pull-right">ta marcado para
+											<h:outputText value="#{event.date}">
+												<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+											</h:outputText>
+										</span>
+									</h2>
+									<h3>
+										#{event.type}
+										<!-- <span class="pull-right"><b>39
+												minutos atrás</b></span> -->
+									</h3>
+								</div>
+								<div class="col-md-6 padding white-box publish-image"
+									style="background-image: url(data:image/png;base64,#{event.imageConverted});">
+								</div>
+								<div class="col-md-6 padding blue-box publish-text">
+									<div class="padding text-center">
+										<p>#{event.description}</p>
+									</div>
+									<div class="details">
+										<ul>
+											<li class="tipo"><span itemprop="eventType">Evento</span>:
+												<strong>#{event.title}</strong></li>
+											<li class="cidade">Cidade: <strong>#{event.type}</strong></li>
+											<li class="data" title="(07/09/2014)">Data: <strong><h:outputText
+														value="#{event.date}">
+														<f:convertDateTime pattern="dd/MM/yyyy - EEEE"></f:convertDateTime>
+													</h:outputText></strong>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</ui:repeat>
+<br/><br/>
+					<div class="gallery-cont">
+						<ui:repeat var="image" value="${viewProfile.user.pictures}">
+							<div class="item col-sm-4 col-md-6 col-lg-4">
+								<div class="photo">
+									<div class="head">
+										<span class="pull-right"> </span>
+										<h4>${image.title}</h4>
+										<span class="desc">Tirada em: <h:outputText
+												value="${image.date}">
+												<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+											</h:outputText></span>
+									</div>
+									<div class="img">
+										<img src="data:image/png;base64,${image.imageView}" />
+										<div class="over">
+											<div class="func">
+												<p:lightBox styleClass="image-zoom" id="lightBoxImage"
+													widgetVar="img" height="800" width="600">
+													<h:outputLink
+														value="data:image/png;base64,${image.imageView}"
+														styleClass="image-zoom" title="${image.title}">
+														<i class="fa fa-search"></i>
+													</h:outputLink>
+												</p:lightBox>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ui:repeat>
+					</div>
+
+
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

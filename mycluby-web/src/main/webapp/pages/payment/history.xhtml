@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{thirdStep.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Configurações de Pagamento</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>Histórico - Pagamentos</h3>
+							</div>
+							<div class="content form-horizontal group-border-dashed">
+
+
+								<div class="block-flat">
+									<div class="header">
+										<h3>Meu Histórico de Pagamentos</h3>
+									</div>
+									<div class="content">
+										<div class="table-responsive">
+											<table class="table no-border hover">
+												<thead class="no-border">
+													<tr>
+														<th class="text-left"><strong>Local</strong></th>
+														<th style="width: 30%;"><strong>Data de
+																Check-In</strong></th>
+														<th style="width: 30%;"><strong>Data de
+																Check-Out</strong></th>
+
+														<th class="text-left"><strong>Valor Pago</strong></th>
+														<th class="text-left"><strong>Status</strong></th>
+													</tr>
+												</thead>
+												<tbody class="no-border-y">
+
+													<ui:repeat var="sessionSite"
+														value="#{core.ctxInfo.currentEntity.allSessions}">
+
+														<tr>
+															<td class="text-left">#{sessionSite.establishment.name}</td>
+															<td><h:outputText value="#{sessionSite.checkIn}">
+																	<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+																		timeZone="America/Sao_Paulo"></f:convertDateTime>
+																</h:outputText></td>
+															<td><h:outputText value="#{sessionSite.checkOut}">
+																	<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"
+																		timeZone="America/Sao_Paulo"></f:convertDateTime>
+																</h:outputText></td>
+
+															<td class="text-left">R$
+																#{sessionSite.consume.totalAmount}</td>
+																<td class="text-left">#{sessionSite.labelStatus}</td>
+														</tr>
+													</ui:repeat>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

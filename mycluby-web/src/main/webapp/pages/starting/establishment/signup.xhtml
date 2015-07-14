@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/template/webcontent/simple.xhtml">
+
+	<ui:define name="contentHead">
+		<title>MyCLuby Social - Cadastrar novo Estabelecimento</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+
+		<div class="block-flat">
+			<div class="header">
+				<h3 class="text-center">
+					<p:graphicImage styleClass="logo-img"
+						value="/resources/images/logo.png" alt="logo" />
+					#{label.title}
+				</h3>
+			</div>
+			<div>
+				<h:form id="formCreateEstablishment" style="margin-bottom: 0px !important;" styleClass="form">
+
+					<div class="content">
+						<div class="header">
+							<h3>Cadastrar meu estabelecimento</h3>
+						</div>
+						<div class="content">
+<p:messages id="messages"></p:messages>
+							<div class="form-group">
+								<label>Nome do estabelecimento</label>
+								<h:inputText styleClass="form-control"
+									label="Nome do estabelecimento" id="nameEstablishment" required="true" value="#{createEstablishment.establishment.name}"
+									maxlength="45" />
+								<p:watermark value="Digite o nome do estabelecimento" for="nameEstablishment"></p:watermark>
+							</div>
+							<div class="form-group">
+								<label>#{label.mail}</label>
+								<h:inputText styleClass="form-control" label="#{label.mail}" value="#{createEstablishment.mail}"
+									id="mailEstablishment" required="true"
+								validatorMessage="Este não é um email valido" maxlength="45">
+									<f:validateRegex
+										pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+									<p:ajax update="@this messages" listener="#{createEstablishment.verifyMail}"
+										 event="change" />
+								</h:inputText>
+								<p:watermark value="Digite o email de login principal do estabelecimento" for="mailEstablishment"></p:watermark>
+							</div>
+							<div class="form-group">
+								<label>#{label.pass}</label>
+								<h:inputSecret styleClass="form-control" label="#{label.pass}"
+									id="passwordEstablishment" required="true"
+									value="#{createEstablishment.establishment.password}" />
+								<p:watermark value="#{label.textPassword}" for="passwordEstablishment"></p:watermark>
+							</div>
+							<div class="form-group">
+								<label>#{label.confirmPassword}</label>
+								<h:inputSecret styleClass="form-control"
+									label="#{label.confirmPassword}" id="confirmPasswordEstablishment"
+									required="true" value="#{createEstablishment.confirmPassword}" />
+								<p:watermark value="#{label.textConfirmPassword}" 
+									for="confirmPasswordEstablishment"></p:watermark>
+							</div>
+							<div class="form-group">
+								<h:outputText escape="false" value="#{label.createPolicieLabel}"></h:outputText>
+							</div>
+						</div>
+					</div>
+					<div class="foot">
+						<h:commandButton styleClass="btn btn-default" immediate="true" action="index" value="#{label.cancel}" />
+						<h:commandButton styleClass="btn btn-primary" 
+							tabindex="0" action="#{createEstablishment.createAccount}"
+							value="#{label.advance}" />
+					
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

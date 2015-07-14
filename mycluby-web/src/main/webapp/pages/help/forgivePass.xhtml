@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="/template/webcontent/simple.xhtml">
+
+	<ui:define name="contentHead">
+		<title>MyCluby Social - Esqueci minha senha</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+
+		<div class="block-flat">
+			<div class="header">
+				<h3 class="text-center">
+					<p:graphicImage styleClass="logo-img"
+						value="/resources/images/logo.png" alt="logo" />
+					#{label.title}
+				</h3>
+			</div>
+			<div>
+				<h:form style="margin-bottom: 0px !important;" styleClass="form">
+
+	<p:messages></p:messages>
+
+					<div class="content">
+						<div class="header">
+							<h3>Esqueci minha senha</h3>
+						</div>
+						<div class="content">
+							<div class="form-group">
+								<h:outputText escape="false"
+									value="Digite no campo abaixo seu email para que possamos encontra-lo e ajudar a recuperar seu acesso ao MyCluby, caso aconteça algum erro por favor entre em contato com o time de suporte técnico."></h:outputText>
+							</div>
+							<div class="form-group">
+								<label>#{label.mail}</label>
+								<h:inputText styleClass="form-control"
+									label="#{label.mail}" id="mail" required="true"
+									maxlength="45" value="#{loginController.login}" />
+								<p:watermark value="#{label.textLogin}" for="mail"></p:watermark>
+							</div>
+							
+						</div>
+					</div>
+					<div class="foot">
+						<h:commandButton  styleClass="btn btn-default" immediate="true" action="index" value="#{label.back}" />
+						<h:commandButton styleClass="btn btn-primary" update="growl"
+							tabindex="0" action="#{loginController.requestForgivePass}"
+							value="Recuperar senha" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

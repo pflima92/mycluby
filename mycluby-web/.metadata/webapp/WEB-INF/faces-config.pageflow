@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13761002642220" configfile="/cas-portal-web/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="pages/index.html" x="122" y="178" id="pf13761003069651" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf13761003069662" inlinks="pf13761003069662" path="/pages/index.html"/>
+  <links id="pf13761003069662" target="pf13761003069651" source="pf13761003069651" outcome="inicio" redirect="true">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>

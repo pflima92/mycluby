@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{establishmentSettings.loadData}" />
+	</f:metadata>
+
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>Configurações do meu Estabelecimento</h2>
+		</div>
+
+		<h:form enctype="multipart/form-data">
+			<div class="cl-mcont">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.settings}</h3>
+							</div>
+
+							<p:messages id="msgs"></p:messages>
+
+							<div class="mt10 content form-horizontal group-border-dashed">
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Imagem Perfil do
+										Estabelecimento</label>
+									<div class="col-sm-6">
+										<p:fileUpload value="#{establishmentSettings.img}"
+											style="display:initial !important;" mode="simple" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Nome do Portal</label>
+									<div class="col-sm-6">
+										<h:inputText
+											value="#{establishmentSettings.establishment.establishmentInfo.portalName}"
+											styleClass="form-control" maxlength="45" style="width: 40%">
+											<p:ajax update="@form" event="change" />
+										</h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Data de
+										inauguração</label>
+									<div class="col-sm-6">
+										<p:calendar pattern="dd/MM/yyyy" label="#{label.dateBirth}"
+											value="#{establishmentSettings.establishment.birthDate}"
+											id="birthDate" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourCountry}</label>
+									<div class="col-sm-6">
+										<h:inputText
+											value="#{establishmentSettings.establishment.country}"
+											styleClass="form-control" maxlength="45" style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourState}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45"
+											value="#{establishmentSettings.establishment.state}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourCity}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45"
+											value="#{establishmentSettings.establishment.city}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourAddress}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45"
+											value="#{establishmentSettings.establishment.address}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.yourPhone}</label>
+									<div class="col-sm-6">
+										<h:inputText styleClass="form-control" maxlength="45"
+											value="#{establishmentSettings.establishment.phone}"
+											style="width: 40%"></h:inputText>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.about}</label>
+									<div class="col-sm-6">
+
+										<h:inputTextarea styleClass="form-control" id="text"
+											value="#{establishmentSettings.establishment.about}">
+										</h:inputTextarea>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="col-sm-7">
+										<label class="control-label">Portal Administrativo</label>
+										<p>Deseja habilitar o Portal Administrativo para seu
+											estabelecimento, lembrando que uma vez habilitado não poderá
+											mais ser excluído, apenas desativado.</p>
+									</div>
+									<div class="col-sm-3">
+										<div style="margin-top: 30px;" ><!--class="switch switch-small"  -->
+											<h:selectBooleanCheckbox
+												value="#{establishmentSettings.establishment.establishmentInfo.portalActive}">
+												<p:ajax update="@form" process="@all" event="change" />
+											</h:selectBooleanCheckbox>
+										</div>
+									</div>
+								</div>
+								<p:outputPanel id="portalPanel"
+									rendered="#{establishmentSettings.establishment.establishmentInfo.portalActive}">
+
+									<!-- <div class="form-group">
+										<label class="col-sm-3 control-label">Contexto de
+											acesso ao portal</label>
+										<div class="col-sm-6">
+											<h:inputText
+												value="#{establishmentSettings.establishment.establishmentInfo.portalPattern}"
+												styleClass="form-control" maxlength="45" style="width: 40%"></h:inputText>
+										</div>
+									</div> -->
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Url de acesso ao
+											portal</label>
+										<div class="col-sm-6">
+											<a href="#{establishmentSettings.currentUrl}" target="blank"><h:outputText
+													styleClass="presentText"
+													value="#{establishmentSettings.currentUrl}">
+												</h:outputText></a>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label">Localização
+											(Acessos e Check-In)</label>
+										<div class="col-sm-6">
+											<h:commandButton id="btn" type="button" icon="ui-icon-pin-s"
+												styleClass="btn " value="Selecionar Localização"
+												onclick="PF('dlg').show();" />
+										</div>
+									</div>
+									
+									<div class="form-group">
+									<label class="col-sm-3 control-label">Notificação aos Usuário (Mensagem apresentada os usuário quando efetuam Check-In)</label>
+									<div class="col-sm-6">
+										<h:inputTextarea styleClass="form-control" 
+											value="#{establishmentSettings.establishment.establishmentInfo.notification}">
+										</h:inputTextarea>
+									</div>
+								</div>
+									
+									
+									
+									<p:dialog id="gmapDialog" widgetVar="dlg" width="645"
+										height="480" modal="true">
+										<p:messages></p:messages>
+										<p:gmap id="gmap" model="#{establishmentSettings.map.model}"
+											center="#{establishmentSettings.map.latitude}, #{establishmentSettings.map.longitude}"
+											zoom="15" type="ROADMAP" style="width:600px;height:400px">
+											<p:ajax event="pointSelect"
+												listener="#{establishmentSettings.onPointSelect}"
+												oncomplete="PF('dlg').show();" update="@form" />
+										</p:gmap>
+
+										<div class="panelButtons mt10">
+											<h:commandButton style="float: right"
+												styleClass="btn btn-success btn-lg" value="Salvar"
+												update="@form"
+												action="#{establishmentSettings.updateEstablishmentContinue}"></h:commandButton>
+										</div>
+
+							</p:dialog>
+
+
+							</p:outputPanel>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panelButtons">
+				<h:commandButton style="float: right"
+					styleClass="btn btn-success btn-lg" value="Atualizar"
+					update="@form"
+					action="#{establishmentSettings.updateEstablishmentContinue}"></h:commandButton>
+				<h:commandButton style="float: right"
+					styleClass="btn btn-default btn-lg" value="Cancelar"
+					action="mainEstablsihment"></h:commandButton>
+			</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

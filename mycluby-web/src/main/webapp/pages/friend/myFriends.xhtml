@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<div class="page-head height120">
+				<h2>Gerenciar minhas Amizades</h2>
+			</div>
+
+			<div class="cl-mcont">
+
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="block-flat">
+							<div class="header">
+								<h3>Meus Amigos</h3>
+							</div>
+							<div class="content">
+								<div class="row friends-list">
+								<h:panelGroup rendered="${empty friends.friends}">
+									<h3>Você não possui nenhum amigo, você pode encontrar através da página de <h:commandLink action="findFriend" immediate="true" value="Encontrar amigos"></h:commandLink>.</h3>
+								</h:panelGroup>
+								
+									<ui:repeat var="frnd" value="${friends.friends}">
+										<div class="col-sm-6 col-md-4" id="aline">
+											<div class="friend-widget">
+											<h:commandLink actionListener="#{core.viewUserProfile}">
+										<f:attribute name="userProfile" value="#{frnd}"></f:attribute>
+												<img title="#{frnd.firstname}" class="ttip"
+													data-toggle="tooltip"
+													src="data:image/png;base64,${frnd.profileImage}" />
+													</h:commandLink>
+												<h4>#{frnd.firstname} #{frnd.lastname}</h4>
+												<span class="pull-right"> <a
+													class="label label-danger"
+													onclick="PrimeFaces.confirm({source:'j_idt123:j_idt127',header:'Você tem certeza disso?',message:'Deseja remover #{frnd.firstname} da sua lista de amigos?',icon:'ui-icon-alert'});return false;"
+													href="#"><i class="fa fa-times"></i></a>
+												</span>
+											</div>
+										</div>
+
+										<p:confirmDialog global="true" showEffect="fade"
+											hideEffect="explode">
+											<p:commandButton value="Sim" process="@this" update="@form"
+												actionListener="#{friends.removeFriend}"
+												styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+												<f:attribute name="action" value="${frnd}" />
+											</p:commandButton>
+											<p:commandButton value="Não" type="button"
+												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+										</p:confirmDialog>
+
+
+									</ui:repeat>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

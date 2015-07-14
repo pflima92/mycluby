@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{galleria.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title_admin_dash}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form enctype="multipart/form-data">
+			<div class="container-fluid">
+				<div class="page-head height120">
+					<h2>Galeria de Fotos</h2>
+					<span class="pull-right"> <a onclick="PF('dlg').show();"
+						class="btn btn-default"> Adicionar nova foto <i
+							class="fa fa-cloud-upload"></i>
+					</a>
+					</span>
+				</div>
+
+				<p:dialog header="Adicinar nova foto" modal="true" width="600"
+					widgetVar="dlg" minimizable="false" resizable="false">
+					<p:panel id="newImg">
+						<div class="form-group mt10">
+							<label class="col-sm-4 control-label">Título:</label>
+							<div>
+								<h:inputText styleClass="form-control" maxlength="45"
+									id="titleImg" value="#{galleria.currentPicture.title}"
+									style="width: 40%"></h:inputText>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Descrição:</label>
+							<div>
+								<h:inputText styleClass="form-control" maxlength="45"
+									id="descriptionImg"
+									value="#{galleria.currentPicture.description}"
+									style="width: 40%"></h:inputText>
+							</div>
+						</div>
+						<br />
+						<div class="content">
+							<div class="well" style="min-height: 180px;">
+								<h4>Selecione uma foto</h4>
+								<p>Adicione uma nova foto com seus amigos, mostre do que o
+									MyCluby é capaz...</p>
+								<p>
+									<p:fileUpload value="#{galleria.img}" styleClass="mt10"
+										id="imgUploaded" style="display:initial !important;"
+										mode="simple" />
+								</p>
+							</div>
+						</div>
+						<hr />
+						<div class="panelButtons" align="center">
+							<h:commandButton styleClass="btn btn-success btn-lg"
+								update="@form" actionListener="#{galleria.uploadFile}"
+								value="Enviar Imagem"></h:commandButton>
+						</div>
+					</p:panel>
+				</p:dialog>
+
+				<div class="cl-mcont">
+				
+					<p:messages></p:messages>
+				
+					<div class="gallery-cont">
+					
+					<h:panelGroup rendered="${empty galleria.user.pictures}">
+						<div class="col-md-12">
+							<div class="block-flat">
+								<h3>
+									Você não possui nenhuma imagem cadastrada, clique em <a onclick="PF('dlg').show();">Adicionar nova foto</a> para adicionar uma nova imagem.
+								</h3>
+							</div>
+						</div>
+					</h:panelGroup>
+
+						<ui:repeat var="image" value="${galleria.user.pictures}">
+							<div class="item col-sm-4 col-md-6 col-lg-4">
+								<div class="photo">
+									<div class="head">
+										<span class="pull-right"> 
+										</span>
+										<h4>${image.title}</h4>
+										<span class="desc">Tirada em: <h:outputText value="${image.date}">
+												<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+											</h:outputText></span> <span class="pull-right"> <a class="label label-danger"
+											href="#"></a> <p:commandLink styleClass="label label-danger"
+												update="@form">
+												<p:confirm header="Confirmação" message="Tem certeza disso?"
+													icon="ui-icon-alert" />
+												<i class="fa fa-times"></i>
+											</p:commandLink> 
+											
+											<p:confirmDialog global="true" showEffect="fade" id="cfr${image.title}"
+												hideEffect="explode">
+												<p:commandButton value="Sim" process="@this" update="@form"
+													actionListener="#{galleria.deleteImg}"
+													styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+														<f:attribute name="action" value="${image}" />
+													</p:commandButton>
+												<p:commandButton value="Não" type="button"
+													styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+											</p:confirmDialog>
+
+										</span>
+									</div>
+									<div class="img">
+										<img src="data:image/png;base64,${image.imageView}" />
+										<div class="over">
+											<div class="func">
+												<p:lightBox styleClass="image-zoom" id="lightBoxImage" widgetVar="img"
+													height="800" width="600">
+													<h:outputLink
+														value="data:image/png;base64,${image.imageView}"
+														styleClass="image-zoom" title="${image.title}">
+														<i class="fa fa-search"></i>
+													</h:outputLink>
+												</p:lightBox>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</ui:repeat>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

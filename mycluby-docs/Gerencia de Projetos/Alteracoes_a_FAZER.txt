@@ -1,0 +1,7 @@
+alteracoes a fazer em todo o documento,
+Subfluxos agora e junto e nao separado.(Todos)
+11- acho que tem muita coisa junta, acho que tem que quebrar em mais casos de uso separado.
+
+retirar 
+ALTERAR O NOME MyCluby Social para MyCluby Social Web
+ALTERAR TODOS OS SUBFLUXOS E RETIRAR A FRASE O CASO DE USO SE INICIA PARA / Subfluxo começa 

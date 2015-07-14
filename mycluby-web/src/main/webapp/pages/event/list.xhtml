@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{events.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title_admin_dash}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form enctype="multipart/form-data">
+			<div class="page-head">
+				<h2>Lista de Eventos</h2>
+			</div>
+
+			<div class="cl-mcont">
+
+				<p:messages></p:messages>
+				<div class="row dash-cols">
+
+					<h:panelGroup rendered="${empty friends.friends}">
+						<div class="col-md-12">
+							<div class="block-flat">
+								<h3>
+									Você não possui nenhum evento, você pode cadastrar através da
+									página
+									<h:commandLink action="newEvent" immediate="true"
+										value="Criar evento"></h:commandLink>
+									.
+								</h3>
+							</div>
+						</div>
+					</h:panelGroup>
+
+
+					<ui:repeat var="event" value="${events.user.events}">
+
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="widget-block">
+								<div class="white-box padding galleria-preview"
+									style="background-size: cover; background-image: url(data:image/png;base64,${event.imageConverted}) no-repeat;">
+									<span class="pull-right"> <p:commandLink
+											styleClass="label label-danger" update="@form">
+											<p:confirm header="Confirmação" message="Tem certeza disso?"
+												icon="ui-icon-alert" />
+											<i class="fa fa-times"></i>
+										</p:commandLink> <p:confirmDialog global="true" showEffect="fade"
+											hideEffect="explode">
+											<p:commandButton value="Sim" process="@this" update="@form"
+												actionListener="#{events.deleteEvent}"
+												styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+												<f:attribute name="action" value="${event}" />
+											</p:commandButton>
+											<p:commandButton value="Não" type="button"
+												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+										</p:confirmDialog>
+
+									</span>
+									<div class="fact-data">
+										<div class="epie-chart" data-percent="45">
+											<span><h1>#{event.title}</h1></span>
+										</div>
+									</div>
+									<div class="fact-data no-padding">
+										<h3>#{event.type}</h3>
+										<h2>
+											<h:outputText value="#{event.date}">
+												<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+											</h:outputText>
+										</h2>
+										<p>#{event.description}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</ui:repeat>
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

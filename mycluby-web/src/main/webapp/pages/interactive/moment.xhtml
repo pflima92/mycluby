@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{findEstablishments.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<div class="page-head">
+			<h2>O Top 10 do MyCluby</h2>
+		</div>
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<h:form id="formMoment">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="block-flat">
+
+								<div class="block">
+									<div class="header">
+										<h2>Quem está bombando?</h2>
+										<h3>O Melhor do MyCluby</h3>
+									</div>
+									<div class="content no-padding">
+										<ul class="items mobileItems">
+
+											<ui:repeat var="establishment" varStatus="status"
+												value="#{findEstablishments.top10Establishments}">
+												<h:commandLink immediate="true"
+													actionListener="#{core.viewEstablishmentProfile}">
+													<f:attribute name="establishmentProfile"
+														value="#{establishment}"></f:attribute>
+													<li>##{status.index+1} - <b>#{establishment.name}</b>  -  Check-In's Registrados: #{establishment.allSessions.size()}</li>
+												</h:commandLink>
+											</ui:repeat>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+				</h:form>
+
+				<!-- 	<a><li>#2 - Shed - Curitiba - Paraná</li></a>
+											<a><li>#3 - Caribbean Disc Club - Curitiba - Paraná</li></a>
+											<a><li>#4 - Shed - Baln Camb. - Santa Catarina</li></a>
+											<a><li>#5 - Yankee - Curitiba - Paraná</li></a>
+											<a><li>#6 - Bar do Alemão - Curitiba - Paraná</li></a>
+											<a><li>#7 - Citra Bar- Curitiba - Paraná</li></a>
+											<a><li>#8 - Menina Zen - Curitiba - Paraná</li></a>
+											<a><li>#9 - Woods - Curitiba - Paraná</li></a>
+											<a><li>#10 - Risca Faca - Curitiba - Paraná</li></a> -->
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

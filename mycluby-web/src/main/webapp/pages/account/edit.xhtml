@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{updateAccount.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form enctype="multipart/form-data">
+
+			<div class="container-fluid">
+				<div class="page-head height120">
+					<h2>Editar meu Perfil</h2>
+					<span class="pull-right"> <h:commandButton
+							style="float: right" styleClass="btn btn-primary" value="Salvar"
+							update="@form" action="#{updateAccount.updateAccountContinue}"></h:commandButton>
+					</span>
+
+				</div>
+
+				<div class="cl-mcont">
+
+
+					<p:messages></p:messages>
+
+					<div class="row">
+
+
+						<div class="col-sm-6 col-md-6">
+							<div class="block-flat" style="min-height: 389px">
+								<div class="header">
+									<h3>#{label.knowYou}</h3>
+								</div>
+								<div class="content" style="min-height: 250px">
+
+									<div class="form-group">
+										<label>#{label.your}&nbsp;#{label.firstname}:</label>
+										<h:outputText styleClass="cntAftLbl"
+											value="#{updateAccount.user.firstname}" />
+									</div>
+									<div class="form-group">
+										<label>#{label.your}&nbsp;#{label.lastname}:</label>
+										<h:outputText styleClass="cntAftLbl"
+											value="#{updateAccount.user.lastname}" />
+									</div>
+									<div class="form-group">
+										<label>#{label.mail}:</label>
+										<h:outputText styleClass="cntAftLbl"
+											value="#{updateAccount.user.mails[0].value}" />
+									</div>
+									<div class="form-group">
+										<label>#{label.dateBirth}</label>
+										<h:outputText styleClass="cntAftLbl"
+											value="#{updateAccount.user.birthDate}">
+											<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+										</h:outputText>
+									</div>
+									<p>#{label.firstInformation}</p>
+
+									<div class="panelButtons">
+										<h:commandButton style="float: right"
+											styleClass="btn btn-primary" value="Alterar Senha"
+											update="@form" action="userChangePassword"></h:commandButton>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-6">
+							<div class="block-flat" style="min-height: 389px">
+								<div class="header">
+									<h3>#{label.seeYou}</h3>
+								</div>
+								<div class="content">
+
+									<div class="imgProfile">
+										<img class="img-polaroid" alt=""
+											src="data:image/png;base64,#{updateAccount.user.profileImage}" />
+									</div>
+									<div class="well" style="min-height: 180px;">
+										<h4>#{label.selectImgProfile}</h4>
+										<p>#{label.textImgProfile}</p>
+										<p>
+											<p:fileUpload value="#{updateAccount.img}" styleClass="mt10"
+												style="display:initial !important;" mode="simple" />
+										</p>
+										<h:commandLink actionListener="#{updateAccount.uploadFile}"
+											update="@form" value="#{label.changeImgProfile}"></h:commandLink>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+
+						<div class="col-md-12">
+							<div class="block-flat">
+								<div class="header">
+									<h3>#{label.tellMore}</h3>
+								</div>
+								<div class="content form-horizontal group-border-dashed">
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourGender}</label>
+										<div class="col-sm-6">
+											<h:selectOneMenu value="#{updateAccount.user.gender}"
+												styleClass="form-control" style="width: 20%">
+												<f:selectItem itemLabel="#{label.genderM}" itemValue="M" />
+												<f:selectItem itemLabel="#{label.genderF}" itemValue="F" />
+											</h:selectOneMenu>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourCountry}</label>
+										<div class="col-sm-6">
+											<h:inputText value="#{updateAccount.user.country}"
+												styleClass="form-control" maxlength="45" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourState}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.state}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourCity}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.city}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourAddress}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.address}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourComplement}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.complement}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourPhone}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.resPhone}" style="width: 40%">
+												<f:validateRegex
+													pattern="^(\(11\) [9][0-9]{4}-[0-9]{4})|(\(1[2-9]\) [5-9][0-9]{3}-[0-9]{4})|(\([2-9][1-9]\) [5-9][0-9]{3}-[0-9]{4})$"></f:validateRegex>
+											</h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourCellPhone}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.cellPhone}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.yourJobPhone}</label>
+										<div class="col-sm-6">
+											<h:inputText styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.jobPhone}" style="width: 40%"></h:inputText>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label">#{label.aboutYou}</label>
+										<div class="col-sm-6">
+											<h:inputTextarea styleClass="form-control" maxlength="45"
+												value="#{updateAccount.user.about}" rows="10"></h:inputTextarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+					<div class="panelButtons">
+						<h:commandButton style="float: right" styleClass="btn btn-primary"
+							value="Salvar" update="@form"
+							action="#{updateAccount.updateAccountContinue}"></h:commandButton>
+
+						<h:commandButton style="float: right" styleClass="btn btn-default"
+							value="#{label.skip}" action="index"></h:commandButton>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

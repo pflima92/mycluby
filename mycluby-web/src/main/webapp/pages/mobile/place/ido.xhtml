@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<ui:define name="contentHead">
+		<title>#{label.title}</title>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="mobMenu">
+
+			<div class="page-head">
+				<h2>Estou em: #{onSite.currentSession.establishment.name}</h2>
+			</div>
+
+
+			<f:metadata>
+				<f:event type="preRenderView"
+					listener="#{onSite.refreshNotification}" />
+			</f:metadata>
+
+			<div class="cl-mcont">
+
+				<p:messages showDetail="false" showSummary="true" closable="true" id="notification" ></p:messages>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="block-flat">
+
+							<div class="block">
+								<div class="header">
+									<h2>O que posso fazer...</h2>
+									<h3>
+										Meu Check-in: <b><h:outputText
+												value="#{onSite.currentSession.checkIn}">
+												<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" timeZone="America/Sao_Paulo" ></f:convertDateTime>
+											</h:outputText> </b>
+									</h3>
+								</div>
+								<div class="content no-padding">
+									<ul class="items mobileItems">
+										<h:commandLink action="consumeView">
+											<li><i class="fa  fa-beer"></i>Ver Consumo</li>
+										</h:commandLink>
+										<h:commandLink action="menuView">
+											<li><i class="fa  fa-tasks"></i>Ver Cardápio</li>
+										</h:commandLink>
+										<h:commandLink action="mobileSettings">
+											<li><i class="fa  fa-beer"></i>Configurações</li>
+										</h:commandLink>
+										<h:commandLink action="placeCheckout">
+											<li><i class="fa   fa-sign-out"></i>Fazer Check-Out</li>
+										</h:commandLink>
+									</ul>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+

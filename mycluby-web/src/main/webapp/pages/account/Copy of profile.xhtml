@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="${core.templateBase}">
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{viewProfile.loadData}" />
+	</f:metadata>
+
+	<ui:define name="contentHead">
+		<title>#{label.title}&nbsp;-#{viewProfile.user.firstname}&nbsp;#{viewProfile.user.lastname}</title>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<div class="cl-mcont">
+
+				<p:messages></p:messages>
+
+				<div class="row">
+
+					<div class="col-sm-6 col-md-6">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{viewProfile.user.firstname}&nbsp;#{viewProfile.user.lastname}</h3>
+							</div>
+							<div class="imgProfile">
+								<img class="img-polaroid" alt=""
+									src="data:image/png;base64,#{viewProfile.user.profileImage}" />
+							</div>
+							<div class="content" style="min-height: 210px">
+								<div class="form-group">
+									<label>#{label.mail}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.mails[0].value}" />
+								</div>
+								<div class="form-group">
+									<label>#{label.dateBirth}</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.birthDate}">
+										<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+									</h:outputText>
+								</div>
+								<div class="form-group">
+									<label>#{label.aboutSingle}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.about}" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-6">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.someActions}</h3>
+							</div>
+							<div class="content" style="min-height: 210px">
+
+								<div class="well">
+									<p>#{label.textSomeActions}</p>
+								</div>
+								<div class="panelButtons">
+
+									<h:panelGroup rendered="#{viewProfile.currentUser}">
+										<h:commandButton style="float: right"
+											styleClass="btn btn-primary" value="#{label.editProfile}"
+											action="editProfile"></h:commandButton>
+									</h:panelGroup>
+									<h:panelGroup rendered="#{!viewProfile.currentUser}">
+										<h:panelGroup rendered="#{!viewProfile.currentUserFriend}">
+
+											<h:commandButton style="float: right" actionListener="#{viewProfile.addFriend}" update="@form"
+												styleClass="btn btn-primary" value="#{label.addFriend}"></h:commandButton>
+
+											<h:commandButton style="float: right"
+												styleClass="btn btn-default" value="#{label.sendMessage}"
+												action="index"></h:commandButton>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{viewProfile.currentUserFriend}">
+
+											<h:commandButton style="float: right" actionListener="#{viewProfile.removeFriend}" update="@form"
+												styleClass="btn btn-primary" value="#{label.removeFriend}"></h:commandButton>
+
+											<h:commandButton style="float: right"
+												styleClass="btn btn-default" value="#{label.sendMessage}"
+												action="index"></h:commandButton>
+										</h:panelGroup>
+									</h:panelGroup>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-sm-6 col-md-6">
+						<div class="block-flat">
+							<div class="header">
+								<h3>#{label.aboutSingle}</h3>
+							</div>
+							<div class="content form-horizontal ">
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.gender}:</label>
+									<h:outputText styleClass="cntAftLbl col-sm-3"
+										value="#{viewProfile.user.genderLabel}" />
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.country}:</label>
+									<h:outputText styleClass="cntAftLbl col-sm-2"
+										value="#{viewProfile.user.country}" />
+
+									<label class="col-sm-3 control-label">#{label.state}:</label>
+									<h:outputText styleClass="cntAftLbl col-sm-2"
+										value="#{viewProfile.user.state}" />
+
+								</div>
+
+
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.city}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.city}" />
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.address}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.address}" />
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.complement}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.complement}" />
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.phone}:</label>
+									<h:outputText styleClass="cntAftLbl col-sm-2"
+										value="#{viewProfile.user.resPhone}" />
+									<label class="col-sm-3 control-label">#{label.cellphone}:</label>
+									<h:outputText styleClass="cntAftLbl col-sm-2"
+										value="#{viewProfile.user.cellPhone}" />
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">#{label.jobphone}:</label>
+									<h:outputText styleClass="cntAftLbl"
+										value="#{viewProfile.user.jobPhone}" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
+
